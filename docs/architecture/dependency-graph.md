@@ -2,6 +2,8 @@
 
 Version 0.1. Status: proposed for G0 review. An arrow means **prerequisite must be verified before dependent implementation is merged**. Source-specific decisions are separate readiness gates, not graph nodes and not hidden implementation dependencies.
 
+Execution status, 18 October 2026: SPEC-001 is integrated into `dev`; the user authorised SPEC-002's scoped offline shared contracts in [ADR-0002](decisions/ADR-0002-shared-contracts.md). Its [verification report](../../reports/implementation/SPEC-002/REPORT-20261018-02.md) does not approve downstream implementations or change these edges. Work remains one spec at a time; the next start needs user approval.
+
 ```mermaid
 flowchart TD
     S001[001 Repository] --> S002[002 Contracts]

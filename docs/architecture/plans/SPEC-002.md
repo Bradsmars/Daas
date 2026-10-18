@@ -1,6 +1,6 @@
 # SPEC-002 — Shared-contract implementation and acceptance plan
 
-Date: 2026-10-18. State: **authorised to start; verification not yet run**.
+Date: 2026-10-18. State: **implementation verified; awaiting user review**. Actual evidence: [implementation report](../../../reports/implementation/SPEC-002/REPORT-20261018-02.md) and [test record](../../../reports/tests/SPEC-002/RUN-20261018-02.md).
 Scope authority: [ADR-0002](../decisions/ADR-0002-shared-contracts.md) and [approval register v0.3](../approval-register.md).
 Work item: [SPEC-002](../../micro-specs/SPEC-002-contracts.md).
 Branch: `feat/spec-002-contracts` from verified foundation `dev` at `f5b7cf1`.

@@ -1,4 +1,4 @@
-﻿JSON and fingerprint verification; synthetic offline data only.
+JSON and fingerprint verification; synthetic offline data only.
 Command: node --version
 v24.22.0
 Observed exit code: 0

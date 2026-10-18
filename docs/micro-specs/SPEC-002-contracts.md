@@ -1,11 +1,11 @@
 # SPEC-002 - Versioned boundary contracts and work identities
 
-Status: **implementing; scoped plan approved by the user**. Version 0.2. Updated 18 October 2026.
+Status: **verified for approved offline scope; awaiting user review**. Version 0.2. Updated 18 October 2026.
 Owner: Codex. Reviewer/acceptance authority: user.
 Source trace: [M](../architecture/master-architecture.md) / [R](../architecture/architecture-review.md): M §3-6; R: Change the extraction contract to identify work, observations and delivery separately.; R: Separate URL lifecycle, attempt outcome and execution status.
 Scoped approvals: shared contracts with synthetic fixtures, strict Ajv, separated identities and RFC 8785 fingerprints, finite offline limits. Real-source D-02/D-05/D-06/D-09 decisions remain downstream gates; see [approval register](../architecture/approval-register.md) and [ADR-0002](../architecture/decisions/ADR-0002-shared-contracts.md).
 Plan: [v0.1](../architecture/implementation-plan.md); [graph](../architecture/dependency-graph.md).
-Implementation/test reports: pending actual verification. Branch: `feat/spec-002-contracts`, from merged SPEC-001 on `dev` at `f5b7cf1`. User approved this scoped implementation on 2026-10-18; no commit, push or merge is authorised.
+Implementation/test reports: [REPORT-20261018-02](../../reports/implementation/SPEC-002/REPORT-20261018-02.md) / [RUN-20261018-02](../../reports/tests/SPEC-002/RUN-20261018-02.md). Branch: `feat/spec-002-contracts`, from merged SPEC-001 on `dev` at `f5b7cf1`. User approved this scoped implementation on 2026-10-18. The user subsequently saved the in-progress commit `fd6139b`; Codex has not committed, pushed or merged the completion changes.
 
 ## Objective and scope
 
@@ -20,7 +20,7 @@ Actor inputs, discovery candidates/coverage, immutable work manifest, extraction
 | SPEC-002-FR-01 | Publish strict versioned JSON Schema contracts and compatible typed representations from one package; validate Actor inputs/outputs and importer input without coercing, defaulting or deleting evidence fields. | M §3, §5; R: implementation approach |
 | SPEC-002-FR-02 | Distinguish URL/context identity, logical batch/dispatch/attempt ownership, physical execution and emitted event identity; define success/failure envelopes separately from 0/1/many business records. | R: Change the extraction contract |
 | SPEC-002-FR-03 | Require discovery provenance and a coverage manifest with scope/configuration versions, partition/seed accounting, counts, stop reason and optional continuation. | R: Stage 1 needs explicit coverage and URL-identity rules. |
-| SPEC-002-FR-04 | Emit event IDs stable on redelivery, new on genuine refetch; define identical replay versus conflicting ID content, per-attempt authority and explicit nullable/absent semantics. | R: Change the extraction contract; D-03 |
+| SPEC-002-FR-04 | Define the producer obligation to retain event IDs on redelivery and allocate new IDs on genuine refetch; classify full-envelope replay versus conflicting ID content and define per-attempt authority/null semantics. Package tests use supplied identities; producer allocation/lifecycle is verified in SPEC-006 and SQL authority in SPEC-013. | R: Change the extraction contract; D-03; approved v0.2 boundary |
 | SPEC-002-FR-05 | Require a caller-supplied trusted profile with a record schema, allowed cardinality, source/context/page type and exact versions before success is usable. Demonstrate missing-field, page/context and zero/false/null behaviour with an explicitly synthetic profile. Real page-content checks and business fields belong to SPEC-005/006 and D-02, not these fixtures. | User-approved v0.2 scope; M §5; R: usable extraction |
 
 ## Non-functional requirements
@@ -126,7 +126,7 @@ Requirement references in this table use this specification's prefix.
 |---|---|---|---|---|
 | SPEC-002-AC-01 | Every golden input/output validates, while missing IDs, unsupported versions, invalid UTC timestamps, unknown outcomes, malformed URLs and over-limit values are rejected with safe field-path reasons. | FR-01, FR-02, NFR-01, NFR-02, NFR-03 | Golden and one-invalid-dimension fixture matrix, including null versus absent. | CP1: every producer/consumer uses the same schema revision and fixtures. |
 | SPEC-002-AC-02 | With an explicit trusted synthetic profile, one assignment can produce zero/one/many permitted records; missing required fields, unregistered profiles, wrong declared page/context or assignment cannot validate as usable success. Actual page detection is verified by SPEC-005/006. | FR-02, FR-05 | Synthetic schema/cardinality vectors, zero/false/null, blocked HTTP200. | CP1: package fixture consumers; CP2: real adapter/importer compatibility remains downstream. |
-| SPEC-002-AC-03 | Reordered object keys in the same envelope yield the same approved content fingerprint; conflicting data under one event ID is flagged; a refetch with identical fields has a distinct event ID. | FR-04 | Canonical fingerprint vectors, arrays/order, Unicode and numeric edge cases. | CP3: SQL replay and conflict behavior matches contract. |
+| SPEC-002-AC-03 | Reordered object keys yield the same content fingerprint; conflicting content under one event ID is flagged; a supplied new event ID is classified as new even when business fields are identical. Producer refetch-ID allocation remains SPEC-006's obligation. | FR-04 | Canonical vectors, arrays/order, Unicode/numeric edge cases, replay/conflict/new identity fixtures. | CP3: SQL replay and conflict behavior matches contract. |
 | SPEC-002-AC-04 | A page-limited discovery run validates only as partial coverage; missing partition results cannot be represented as complete, and source provenance remains distinct from target source ownership. | FR-03 | Complete/partial/failed/cancelled coverage fixtures. | CP2/CP4: Discovery Actor output passes importer contract. |
 
 ## Unit and integration test requirements
@@ -135,7 +135,7 @@ TDD first meaningful case: reject an envelope missing attempt_id despite contain
 
 Contract tests consume representative outputs from 003/006 and inputs to 008/013 when available. Those tests are CP2/CP3 follow-through, not extra implementation prerequisites for defining the package. No mock-only result is described as live integration.
 
-Use [test-strategy](../standards/test-strategy.md); commands are established by 001 and actual results recorded later. All checks in this draft are planned, not executed.
+Actual commands and results are in RUN-20261018-02. Lint, types, 20 harness, 88 unit and 145 contract tests passed in both the working tree and an isolated locked-install copy. CP1 covers this shared package; physical Actor/SQL integration is not claimed.
 
 ## Error handling and recovery
 
@@ -147,13 +147,13 @@ Validation has no retries or side effects. Real source profiles and runtime poli
 
 Scoped G0/D-01/D-03/D-07 approvals permit v0.2 offline implementation. Real D-02/D-05/D-06/D-09 policies and D-03 persistence behaviour remain open downstream. The register records their authority. Contract changes update affected dependents before implementation.
 
-- [ ] Common contracts, synthetic profile boundary, finite offline limits and canonical fingerprint rules implemented; golden normal/failure fixtures pass; producer/consumer ownership and CP1 evidence recorded. Real source/SQL/Actor compatibility stays explicitly assigned downstream.
-- [ ] All FR/NFR and ACs have passing applicable evidence; meaningful behavior has red/green history.
-- [ ] Required real-boundary checks pass; skipped, blocked or failing required checks remain unverified.
-- [ ] Shared contracts, security, failure recovery and relevant integration checkpoint reviewed.
-- [ ] No unapproved infrastructure or deviations; implementation/test reports and any accepted ADRs linked.
-- [ ] Verification recorded separately from acceptance; current state remains draft until actual gates pass.
+- [x] Common contracts, synthetic profile boundary, finite offline limits and canonical fingerprint rules implemented; golden normal/failure fixtures pass; producer/consumer ownership and CP1 evidence recorded. Real source/SQL/Actor compatibility stays explicitly assigned downstream.
+- [x] All scoped FR/NFR and ACs have passing applicable evidence; meaningful behavior has red/green history.
+- [x] Required own-boundary checks pass; external Actor/SQL checks are outside v0.2 and remain downstream, not claimed as passing.
+- [x] Shared contracts, security, failure cases and CP1 package boundary reviewed; material findings have regression coverage.
+- [x] No unapproved infrastructure or deviations; implementation/test reports and ADR linked.
+- [x] Verification recorded separately from acceptance; user acceptance and publication of completion changes remain pending.
 
-Completion record: report none; tested revision none; reviewer/date pending; acceptance pending.
-Change history: v0.1 initial source-traced draft, 18 October 2026.
+Completion record: REPORT-20261018-02; tested baseline `fd6139b` plus linked working-source manifest; Codex/18 October 2026; user acceptance pending.
+Change history: v0.1 initial source-traced draft; v0.2 user-approved offline scope, explicit trusted profile and finite limits, then verification evidence; 18 October 2026.
 

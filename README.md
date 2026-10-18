@@ -1,6 +1,6 @@
 # DaaS platform specification workspace
 
-The SPEC-001 repository foundation is implemented on a feature branch for review: npm workspaces, strict TypeScript, linting and an offline verification harness. Crawlers, contracts, MSSQL migrations and integration behavior are implemented by later approved specifications.
+The SPEC-001 repository foundation is merged into `dev`. SPEC-002 adds shared message contracts, strict validation and canonical fingerprints on `feat/spec-002-contracts`. Crawlers, MSSQL migrations and integration behavior belong to later approved specifications.
 
 Start with [development setup](docs/development.md), [the specification baseline](docs/architecture/master-spec.md), [the dependency graph](docs/architecture/dependency-graph.md) and [the execution plan](docs/architecture/implementation-plan.md). Foundation approval is recorded in [the approval register](docs/architecture/approval-register.md); later specifications and architectural choices still require their own gates.
 
@@ -11,7 +11,7 @@ npm ci
 npm run check
 ```
 
-`check` runs lint, strict type checking and the foundation harness. Domain unit/contract suites are currently empty and fail when invoked; external suites explicitly report `BLOCKED` without test configuration. On Windows PowerShell, use `npm.cmd` if execution policy prevents `npm.ps1`.
+`check` runs lint, strict type checking and the harness, unit and contract suites. Contracts use synthetic fixtures; external suites explicitly report `BLOCKED` without test configuration. On Windows PowerShell, use `npm.cmd` if execution policy prevents `npm.ps1`.
 
 | Resource | Purpose |
 |---|---|
@@ -24,4 +24,4 @@ npm run check
 | [Templates](docs/templates/README.md) | Reusable specification, report and ADR formats |
 | [Reports](reports/README.md) | Future implementation/test evidence; current documentation review |
 
-The `apps/` and `packages/` workspace packages are private structural boundaries. `database/` and the test-suite directories document their future responsibilities. No source Actor, application entry point or database client exists yet.
+The workspace packages are private. [Shared contracts](packages/contracts/README.md) expose the current schemas and trusted validation APIs. `apps/` and `database/` document their future responsibilities; no source Actor or database client exists yet.

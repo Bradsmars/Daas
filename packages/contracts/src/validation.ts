@@ -114,7 +114,7 @@ function intrinsic<N extends ContractName>(name: N, value: Contracts[N]): Result
 
 /** Shape and local invariants only. Use the contextual validators before accepting producer output. */
 export function validateContract<N extends ContractName>(name: N, value: unknown): Result<Contracts[N]> {
-  if (!Object.hasOwn(validators, name)) return fail('/', 'unsupported_contract');
+  if (typeof name !== 'string' || !Object.hasOwn(validators, name)) return fail('/', 'unsupported_contract');
   const inspected = inspectJson(value);
   if (!inspected.ok) return inspected;
   const validate = validators[name];

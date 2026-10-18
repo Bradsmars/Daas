@@ -212,6 +212,23 @@ describe('SPEC-002-AC-01: finite contract boundary values', () => {
 });
 
 describe('SPEC-002-AC-02: trusted extraction semantics and assignment correlation', () => {
+  test('snapshots approved configuration so later caller mutation cannot broaden trust', () => {
+    const configuration = structuredClone(profile);
+    const validate = createExtractionValidator(configuration);
+    configuration.max_records = 0;
+    configuration.record_schema.required = [];
+    configuration.evidence_policy.allowed_locations.push({ storage_provider: 'unapproved', location_id: 'unapproved', retention_class: 'test-only' });
+    expect(validate(event, manifest(), event.apify_run_id).ok).toBe(true);
+    expect(validate(changedEvent({ records: [{}] }), manifest(), event.apify_run_id).ok).toBe(false);
+    expect(validate(changedEvent({ evidence_refs: [{ ...evidence, storage_provider: 'unapproved', location_id: 'unapproved' }] }), manifest(), event.apify_run_id).ok).toBe(false);
+  });
+
+  test('structural validation alone cannot establish usable source records', () => {
+    const input = changedEvent({ records: [{}] });
+    expect(validateContract('ExtractionEvent', input).ok).toBe(true);
+    expect(createExtractionValidator(profile)(input, manifest(), event.apify_run_id).ok).toBe(false);
+  });
+
   test.each([0, 1, 3])('permits the trusted profile cardinality of %i records', (count) => {
     const input = changedEvent({ records: Array.from({ length: count }, () => structuredClone(event.records[0])) });
     expect(createExtractionValidator(profile)(input, manifest(), event.apify_run_id).ok).toBe(true);
@@ -385,6 +402,19 @@ describe('SPEC-002-AC-04: source provenance and honest coverage', () => {
 });
 
 describe('SPEC-002-AC-01: bounded execution accounting', () => {
+  test('an interrupted subset of a multi-assignment execution cannot claim finished', () => {
+    const expected = manifest();
+    const first = expected.assignments[0];
+    if (!first) throw new Error('The fixture requires an assigned attempt.');
+    expected.assignments.push({ ...first, attempt_id: otherUuid, url_id: '4', canonical_url: 'https://target.example.test/second-item' });
+    const digest = manifestFingerprint(expected);
+    if (!digest.ok) throw new Error('The fixture manifest must have a fingerprint.');
+    expected.manifest_fingerprint = digest.value;
+    const partial = { ...summary, assigned_count: 2, stop_reason: 'error' };
+    expect(validateExecutionSummary(partial, expected, event.apify_run_id).ok).toBe(true);
+    expect(validateExecutionSummary({ ...partial, stop_reason: 'finished' }, expected, event.apify_run_id).ok).toBe(false);
+  });
+
   test('accepts matching execution accounting and a cancelled run with no fabricated results', () => {
     expect(validateExecutionSummary(summary, manifest(), event.apify_run_id).ok).toBe(true);
     const cancelled = { ...summary, processed_count: 0, emitted_count: 0, emitted_attempt_ids: [], stop_reason: 'cancelled' };

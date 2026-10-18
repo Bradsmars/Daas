@@ -31,16 +31,17 @@ For a fresh checkout, install/select the pinned runtime first; the temporary dir
 |---|---|
 | `npm run lint` | Lints JavaScript tooling and TypeScript; warnings fail. |
 | `npm run typecheck` | Strictly checks tooling, harness tests and future application TypeScript without generating build output. |
-| `npm test` / `npm run test:harness` | Runs actual offline foundation tests, including bounded subprocess probes of test discovery/failure. |
-| `npm run check` | Runs the three required foundation checks: lint, typecheck and harness. |
-| `npm run test:unit` | Selects `tests/unit/**/*.test.ts`. Currently empty: nonzero exit, NOT RUN rather than PASS. |
-| `npm run test:contracts` | Selects `tests/contracts/**/*.test.ts`. Currently empty: nonzero exit. |
+| `npm test` | Runs all implemented offline harness, unit and contract suites. |
+| `npm run test:harness` | Runs foundation tests, including subprocess probes of test discovery/failure. |
+| `npm run check` | Runs lint, strict type checks and all implemented offline suites. |
+| `npm run test:unit` | Runs JSON resource/strict parsing and canonical fingerprint/replay tests. |
+| `npm run test:contracts` | Runs shared schemas and contextual validation against synthetic fixtures. |
 | `npm run test:integration` | Requires `DAAS_ENV=test` and `DAAS_MSSQL_TEST_CONNECTION_STRING`; otherwise prints BLOCKED and exits 2 before running any test. |
 | `npm run test:live` | Requires `DAAS_ENV=test` and `DAAS_APIFY_TEST_TOKEN`; otherwise prints BLOCKED and exits 2. Future tests own additional Actor/source/budget checks. |
 
 External suites remain empty even if configuration is supplied, so they still fail until meaningful tests are implemented. A successful harness assertion about a blocked command does not mean SQL/Apify integration passed. Preflight diagnostics print configuration names only. A child runner's nonzero exit is preserved.
 
-The default `npm test` intentionally verifies only the current foundation. Extend its scope when later specifications add domain tests; never use an empty suite or a placeholder passing test as completion evidence. Vitest's existing discovery behavior is tested using temporary capability probes; those probes are not permanent application fixtures.
+The default `npm test` includes SPEC-002's offline unit/contract tests. Empty suites still fail; external suite gates retain their prior behavior. Vitest discovery is tested using temporary capability probes. Strict type checks include erasable TypeScript syntax, and the private contracts package exports source directly for the pinned Node 24 runtime. See [the package boundary](../packages/contracts/README.md) before consuming validation APIs; structural validation alone cannot establish usable extraction.
 
 ## Development, test and production configuration
 

@@ -1,4 +1,4 @@
-﻿Command: node node_modules/vitest/vitest.mjs run --project unit tests/unit/json.test.ts tests/unit/fingerprint.test.ts
+Command: node node_modules/vitest/vitest.mjs run --project unit tests/unit/json.test.ts tests/unit/fingerprint.test.ts
 
  RUN  v5.0.5 C:/Users/Bradley/OneDrive - Liverpool John Moores University/Documents/Daas service/Daas
 
