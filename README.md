@@ -1,8 +1,17 @@
 # DaaS platform specification workspace
 
-This repository currently contains specifications and engineering guidance only. No application code, database migrations, dependencies or infrastructure have been created.
+The SPEC-001 repository foundation is implemented on a feature branch for review: npm workspaces, strict TypeScript, linting and an offline verification harness. Crawlers, contracts, MSSQL migrations and integration behavior are implemented by later approved specifications.
 
-Start with [the specification baseline](docs/architecture/master-spec.md), review [the dependency graph](docs/architecture/dependency-graph.md) and [the execution plan](docs/architecture/implementation-plan.md), then resolve [the approval register](docs/architecture/approval-register.md). The framework is **draft for review**; implementation is not authorised by this documentation pass.
+Start with [development setup](docs/development.md), [the specification baseline](docs/architecture/master-spec.md), [the dependency graph](docs/architecture/dependency-graph.md) and [the execution plan](docs/architecture/implementation-plan.md). Foundation approval is recorded in [the approval register](docs/architecture/approval-register.md); later specifications and architectural choices still require their own gates.
+
+With Node **24.22.0** and npm **11.19.1** available:
+
+```bash
+npm ci
+npm run check
+```
+
+`check` runs lint, strict type checking and the foundation harness. Domain unit/contract suites are currently empty and fail when invoked; external suites explicitly report `BLOCKED` without test configuration. On Windows PowerShell, use `npm.cmd` if execution policy prevents `npm.ps1`.
 
 | Resource | Purpose |
 |---|---|
@@ -15,4 +24,4 @@ Start with [the specification baseline](docs/architecture/master-spec.md), revie
 | [Templates](docs/templates/README.md) | Reusable specification, report and ADR formats |
 | [Reports](reports/README.md) | Future implementation/test evidence; current documentation review |
 
-The eventual `apps/`, `packages/`, `database/` and `tests/` directories are planned in SPEC-001. They are deliberately not scaffolded during specification engineering.
+The `apps/` and `packages/` workspace packages are private structural boundaries. `database/` and the test-suite directories document their future responsibilities. No source Actor, application entry point or database client exists yet.

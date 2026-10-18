@@ -1,0 +1,80 @@
+
+> daas-platform@0.0.0 test:harness
+> vitest run --project harness --reporter=verbose -t passes the validated environment
+
+
+ RUN  v5.0.5 <workspace>
+
+ ↓ |harness| tests/harness/test-runner.test.ts > SPEC-001-AC-02: real test-runner command behavior > an empty unit suite cannot report success
+ ↓ |harness| tests/harness/test-runner.test.ts > SPEC-001-AC-02: real test-runner command behavior > the unit project executes its discovered fixture and excludes other suites
+ ↓ |harness| tests/harness/test-runner.test.ts > SPEC-001-AC-02: real test-runner command behavior > the contracts project executes its discovered fixture and excludes other suites
+ ↓ |harness| tests/harness/test-runner.test.ts > SPEC-001-AC-02: real test-runner command behavior > a failing discovered test propagates a nonzero command result
+ ↓ |harness| tests/harness/external-tests.test.ts > external verification preflight > reports missing MSSQL test configuration as BLOCKED before launching a test
+ ↓ |harness| tests/harness/external-tests.test.ts > external verification preflight > requires an explicit test environment (development)
+ ↓ |harness| tests/harness/external-tests.test.ts > external verification preflight > requires an explicit test environment (production)
+ ↓ |harness| tests/harness/external-tests.test.ts > external verification preflight > requires an explicit test environment ()
+ ↓ |harness| tests/harness/external-tests.test.ts > external verification preflight > requires an explicit test environment (undefined)
+ ↓ |harness| tests/harness/external-tests.test.ts > external verification preflight > requires a nonblank SQL test secret ()
+ ↓ |harness| tests/harness/external-tests.test.ts > external verification preflight > requires a nonblank SQL test secret (   )
+ ↓ |harness| tests/harness/external-tests.test.ts > external verification preflight > requires a nonblank SQL test secret (undefined)
+ ↓ |harness| tests/harness/external-tests.test.ts > external verification preflight > names the missing live token without exposing other configured secret values
+ ↓ |harness| tests/harness/external-tests.test.ts > external verification preflight > rejects unknown suites before launch
+ ↓ |harness| tests/harness/external-tests.test.ts > external verification preflight > preserves the actual SQL test runner result (0)
+ ↓ |harness| tests/harness/external-tests.test.ts > external verification preflight > preserves the actual SQL test runner result (1)
+ ↓ |harness| tests/harness/external-tests.test.ts > external verification preflight > preserves the actual SQL test runner result (7)
+ ↓ |harness| tests/harness/external-tests.test.ts > external verification preflight > dispatches live checks separately from SQL checks
+ × |harness| tests/harness/external-tests.test.ts > external verification preflight > passes the validated environment to the runner rather than an unrelated process environment 8ms
+   → expected "vi.fn()" to be called with arguments: [ 'integration', …(1) ]
+
+Received:
+
+  1st vi.fn() call:
+
+  [
+    "integration",
+-   {
+-     "DAAS_ENV": "test",
+-     "DAAS_MSSQL_TEST_CONNECTION_STRING": "synthetic-secret",
+-   },
+  ]
+
+
+Number of calls: 1
+
+ ↓ |harness| tests/harness/external-tests.test.ts > external verification preflight > exposes BLOCKED and nonzero exit status through the real command-line entry point
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |harness| tests/harness/external-tests.test.ts > external verification preflight > passes the validated environment to the runner rather than an unrelated process environment
+AssertionError: expected "vi.fn()" to be called with arguments: [ 'integration', …(1) ]
+
+Received:
+
+  1st vi.fn() call:
+
+  [
+    "integration",
+-   {
+-     "DAAS_ENV": "test",
+-     "DAAS_MSSQL_TEST_CONNECTION_STRING": "synthetic-secret",
+-   },
+  ]
+
+
+Number of calls: 1
+
+ ❯ tests/harness/external-tests.test.ts:82:17
+     80|     const env = { DAAS_ENV: 'test', DAAS_MSSQL_TEST_CONNECTION_STRING:…
+     81|     expect(runExternalSuite('mssql', { env, run })).toBe(1);
+     82|     expect(run).toHaveBeenCalledWith('integration', env);
+       |                 ^
+     83|   });
+     84|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 skipped (2)
+      Tests  1 failed | 19 skipped (20)
+   Start at  12:11:33
+   Duration  203ms (import 44%, transform 34%, tests 11%, worker 10%, environment 1%)

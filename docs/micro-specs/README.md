@@ -1,12 +1,12 @@
 # Micro-specification index
 
-Version 0.1, 18 October 2026. **All 18 specs are draft; no implementation or application tests have started.**
+Version 0.2, 18 October 2026. **SPEC-001 foundation is verified and awaiting user review; the remaining 17 specs are draft.** No crawler, contract, database or live pipeline implementation has started.
 
 Read [the baseline](../architecture/master-spec.md), [DAG](../architecture/dependency-graph.md) and [implementation plan](../architecture/implementation-plan.md) first. G0 (user review of graph/plan) applies to every implementation task. Open decisions in the register block only the affected work; transitive predecessor gates still apply. The decisions below are a quick index; each spec's complete requirements and entry gates govern readiness.
 
 | ID / specification | Direct predecessors | Main open decisions | State / evidence |
 |---|---|---|---|
-| [SPEC-001 - Repository and harness](SPEC-001-repository.md) | none | D-01 | draft / NOT RUN |
+| [SPEC-001 - Repository and harness](SPEC-001-repository.md) | none | Foundation G0/D-01 resolved | verified / foundation checks PASS; acceptance pending |
 | [SPEC-002 - Versioned contracts](SPEC-002-contracts.md) | 001 | D-01/02/03/05/06/09 | draft / NOT RUN |
 | [SPEC-003 - Discovery Actor and coverage](SPEC-003-discovery.md) | 004,016 | D-02/05/07/09 | draft / NOT RUN |
 | [SPEC-004 - URL/context normalization](SPEC-004-url-normalization.md) | 002 | D-02/03/05 | draft / NOT RUN |

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+coverage/
+.vitest/
+tests/.harness-probes/
+.env
+.env.*
+!.env.*.example
+*.log
+*.tsbuildinfo
+storage/

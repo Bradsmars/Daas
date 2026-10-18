@@ -1,6 +1,6 @@
 # Reports
 
-Status: **DRAFT — documentation review recorded; no application implementation or test execution recorded.**
+Status: **SPEC-001 foundation verification recorded; feature commit/push approved, merge and acceptance pending.** Crawler, contracts, MSSQL and live pipeline checks remain unimplemented.
 
 This directory will hold evidence produced while executing approved micro-specifications. The authoritative architecture and architecture review are present; the framework is not yet implementation-ready while blocking architectural choices await user resolution and the implementation plan awaits review. Documentation scaffolding is not evidence of application behaviour.
 
@@ -21,9 +21,9 @@ Keep published reports immutable. Reruns receive new IDs. Corrections receive am
 
 ## Report index
 
-[Specification framework review](specification-framework-review.md) records the documentation checks and outstanding approvals. It is not application implementation or test evidence. The row below remains an unexecuted application-work placeholder.
+[Specification framework review](specification-framework-review.md) preserves the earlier documentation-only checks. SPEC-001's foundation evidence is indexed below; it does not establish domain or live integration behavior.
 
 | Specification / revision | Latest implementation attempt | Latest required-check status | Test runs / prior attempts | Amendments |
 | --- | --- | --- | --- | --- |
-| `<not assigned>` | `<none>` | `NOT RUN` | `<none>` | `<none>` |
+| SPEC-001 / 0.2 | [REPORT-20261018-01](implementation/SPEC-001/REPORT-20261018-01.md) | PASS for required foundation checks; feature commit/push approved, merge/acceptance pending | [RUN-20261018-01](tests/SPEC-001/RUN-20261018-01.md), with actual red/green history | publication approval recorded in the report |
 
