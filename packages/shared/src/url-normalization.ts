@@ -7,7 +7,8 @@ export const URL_NORMALIZATION_LIMITS = Object.freeze({ urlCodePoints: 2048, ori
 
 const text = { type: 'string', minLength: 1, maxLength: URL_NORMALIZATION_LIMITS.urlCodePoints } as const;
 const common = schemas.WorkManifest.properties;
-const policySchema = {
+// Internal schema reuse keeps runtime authorization aligned with SPEC-004 syntax.
+export const urlNormalizationPolicySchema = {
   type: 'object', additionalProperties: false,
   properties: {
     source_id: common.source_id, request_context_id: common.request_context_id, normalization_version: common.normalization_version,
@@ -23,7 +24,7 @@ const inputSchema = {
   required: ['url', 'request_context_id', 'normalization_version'],
 } as const;
 
-export type UrlNormalizationPolicy = FromSchema<typeof policySchema>;
+export type UrlNormalizationPolicy = FromSchema<typeof urlNormalizationPolicySchema>;
 export type UrlNormalizationInput = FromSchema<typeof inputSchema>;
 export type NormalizedUrl = UrlIdentity & Pick<UrlNormalizationPolicy, 'source_id' | 'request_context_id' | 'normalization_version'> & {
   original_url: string;
@@ -32,7 +33,7 @@ export type NormalizedUrl = UrlIdentity & Pick<UrlNormalizationPolicy, 'source_i
 
 const ajv = new Ajv({ strict: true, coerceTypes: false, useDefaults: false, removeAdditional: false, allErrors: false, ownProperties: true, messages: false, logger: false });
 ajv.addFormat('sql-bigint', (value: string) => /^[1-9][0-9]{0,18}$/.test(value) && BigInt(value) <= 9223372036854775807n);
-const validatePolicy = ajv.compile<UrlNormalizationPolicy>(policySchema);
+const validatePolicy = ajv.compile<UrlNormalizationPolicy>(urlNormalizationPolicySchema);
 const validateInput = ajv.compile<UrlNormalizationInput>(inputSchema);
 
 function fail(path: string, code: string): Result<never> {

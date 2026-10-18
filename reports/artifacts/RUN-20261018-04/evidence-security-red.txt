@@ -1,0 +1,45 @@
+
+> daas-platform@0.0.0 test:contracts
+> vitest run --project contracts tests/contracts/evidence-security.test.ts -t another owner prefix
+
+
+ RUN  v5.0.5 <workspace>
+
+ ❯ |contracts| tests/contracts/evidence-security.test.ts (60 tests | 1 failed | 59 skipped) 10ms
+   ❯ evidence location and ownership boundaries (25)
+     × denies valid descriptor bytes belonging to another owner prefix 9ms
+npm.cmd :
+At line:4 char:1
++ npm.cmd run test:contracts -- tests/contracts/evidence-security.test. ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |contracts| tests/contracts/evidence-security.test.ts > evidence location and ownership boundaries > denies
+valid descriptor bytes belonging to another owner prefix
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/contracts/evidence-security.test.ts:26:89
+     24| describe('evidence location and ownership boundaries', () => {
+     25|   it('denies valid descriptor bytes belonging to another owner prefix'…
+     26|     expect(validator()({ ...reference(), object_key: 'scope/run-2/resp…
+       |                                                                                         ^
+     27|   });
+     28|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 59 skipped (60)
+   Start at  14:19:33
+   Duration  400ms (import 72%, transform 22%, tests 4%, worker 2%)
+

@@ -1,0 +1,55 @@
+
+> daas-platform@0.0.0 check
+> npm run lint && npm run typecheck && npm test
+
+
+> daas-platform@0.0.0 lint
+> eslint . --max-warnings 0
+
+
+> daas-platform@0.0.0 typecheck
+> tsc --noEmit
+
+
+> daas-platform@0.0.0 test
+> npm run test:harness && npm run test:unit && npm run test:contracts
+
+
+> daas-platform@0.0.0 test:harness
+> vitest run --project harness
+
+
+ RUN  v5.0.5 <workspace>
+
+
+ Test Files  2 passed (2)
+      Tests  20 passed (20)
+   Start at  14:25:02
+   Duration  2.22s (tests 98%, import 1%, transform 1%)
+
+
+> daas-platform@0.0.0 test:unit
+> vitest run --project unit
+
+
+ RUN  v5.0.5 <workspace>
+
+
+ Test Files  4 passed (4)
+      Tests  257 passed (257)
+   Start at  14:25:05
+   Duration  396ms (import 64%, tests 23%, transform 9%, worker 4%)
+
+
+> daas-platform@0.0.0 test:contracts
+> vitest run --project contracts
+
+
+ RUN  v5.0.5 <workspace>
+
+
+ Test Files  6 passed (6)
+      Tests  418 passed (418)
+   Start at  14:25:06
+   Duration  8.59s (tests 78%, import 20%, transform 2%)
+

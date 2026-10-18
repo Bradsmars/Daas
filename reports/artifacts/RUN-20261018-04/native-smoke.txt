@@ -1,0 +1,4 @@
+Native Node 24 shared runtime exports and guarded session: PASS
+START_UTC=2026-10-18T13:28:11.7885614Z
+FINISH_UTC=2026-10-18T13:28:12.1493299Z
+EXIT=0

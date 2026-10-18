@@ -2,7 +2,7 @@
 
 Version: 0.1. Date: 18 October 2026. Status: **draft for user review**.
 
-This is an implementation planning synthesis, not a replacement for either source document. Proposed resolutions become binding only after user approval of the affected scope/decisions. SPEC-001/002 are verified and integrated into dev; SPEC-004's source-independent offline identity scope is authorised under ADR-0003. The [approval register](approval-register.md) records these limited decisions; remaining specifications and real-source/SQL/runtime policies retain their gates.
+This is an implementation planning synthesis, not a replacement for either source document. Proposed resolutions become binding only after user approval of the affected scope/decisions. SPEC-001/002/004 are verified and integrated into dev. SPEC-016's controlled HTTP, environment-secret and explicit fixture-policy scope is authorised under [ADR-0004](decisions/ADR-0004-controlled-http-security.md). The [approval register](approval-register.md) records these limited decisions; remaining specifications and real-source/SQL/hosted-runtime policies retain their gates.
 
 ## Authoritative inputs and provenance
 

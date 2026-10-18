@@ -1,8 +1,8 @@
 # Codex implementation plan
 
-Version 0.2, 18 October 2026. Status: **execution permitted only for individually approved scopes; remaining architecture decisions are proposed**.
+Version 0.3, 18 October 2026. Status: **execution permitted only for individually approved scopes; remaining architecture decisions are proposed**.
 
-Execution update, 18 October 2026: SPEC-001/002 are verified and integrated into dev. The user authorised SPEC-004's pure URL/context identity with synthetic fixtures and caller-supplied trusted policy; see ADR-0003 and its scoped plan. Work proceeds **one specification at a time on a feature branch from `dev`**, with user approval required before the next specification. Parallel opportunities remain planning information, not permission to implement several specifications concurrently. Real-source and later architectural decisions remain open.
+Execution update, 18 October 2026: SPEC-001/002/004 are verified and integrated into dev. The user authorised SPEC-016's controlled-fixture HTTP foundation and explicit test ceilings; see [ADR-0004](decisions/ADR-0004-controlled-http-security.md) and [its scoped plan](plans/SPEC-016.md). Work proceeds **one specification at a time on a feature branch from `dev`**, with user approval required before the next specification. Parallel opportunities remain planning information, not permission to implement several specifications concurrently. Real-source and later architectural decisions remain open.
 
 ## G0: review before coding
 
@@ -17,7 +17,7 @@ Start tasks as soon as their direct prerequisites and decision gates are satisfi
 | Stage | Work and parallelism | Integration checkpoint / exit evidence |
 |---|---|---|
 | A | 001 repository, then 002 shared contracts | **CP1: contract baseline.** Reproducible harness; schema/input/output fixture compatibility; exact identity, state, versioning, null semantics and source contract approved. No guessed fields. |
-| B | 004 identity, 005 adapter, 007 SQL schema and 016 runtime security can run in parallel | **CP2: isolated boundaries.** Approved URL vectors, semantic parser fixtures, real MSSQL migration/index checks and target-security tests pass. Contract consumers agree. |
+| B | 004 identity precedes 016 runtime security; 005 adapter and 007 SQL schema can proceed independently when approved | **CP2: isolated boundaries.** Approved URL vectors, semantic parser fixtures, real MSSQL migration/index checks and target-security tests pass. Contract consumers agree. |
 | C | 003 discovery, 009 claim/fence and 010 Apify transport, as prerequisites allow; then 011 dispatch, 012 reader/quarantine and 017 evidence can run in parallel | Merge each at its ready dependency boundary. Verify real SQL claims, transactional intent and raw checkpoint protocol before their consumers depend on them. |
 | D | 006 extraction, 008 discovery import and 013 Bronze commit can run in parallel after their predecessors; then 014 reconciliation | **CP3: ownership and ingestion correctness.** Real SQL concurrent claims, stale fence, checkpoint rollback/lost acknowledgment, conflicting replay and quarantine tests; simulated lost launch response and failed/partial Actor; retained evidence replay. No network call held inside a SQL transaction. |
 | E | 015 assembles one source across both Actors and all integration modules | **CP4: first working pipeline.** Deterministic fixture pipeline, then bounded live hosted-Apify/private-MSSQL smoke run. Verify discovery→inventory→claim/intent→physical extraction→dataset→evidence policy→atomic Bronze/outcome/checkpoint→reconciliation. Repeat delivery adds zero events; a genuinely new scheduled observation adds history. |
@@ -45,7 +45,7 @@ This repository-specific workflow is consistent with official OpenAI guidance on
 
 Use synthetic fixture content first. A controlled index exposes two distinct valid detail URLs, a repeated URL, an out-of-scope link and a non-target navigation link. The two detail pages each yield one approved synthetic business record in the happy path. An initial run produces two inventory identities, two assigned attempts and two valid success envelopes; new-vs-known counts reconcile exactly. Redelivering both datasets adds no inventory identities or event rows. A subsequent due capture creates two new attempts/events and preserves the first observations.
 
-Proposed finite values make the controlled test repeatable; D-07 must approve or replace them before readiness. These do not establish source permissions, production throughput, cost or SLAs.
+Proposed finite values make the controlled test repeatable. The subset explicitly recorded in ADR-0004 is approved for SPEC-016's HTTP fixtures; other pipeline values below remain proposals requiring D-07 approval. These do not establish source permissions, production throughput, cost or SLAs.
 
 | Control | Controlled-fixture proposal |
 |---|---|

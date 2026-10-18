@@ -1,0 +1,13 @@
+
+> daas-platform@0.0.0 test:contracts
+> vitest run --project contracts tests/contracts/evidence-security.test.ts
+
+
+ RUN  v5.0.5 <workspace>
+
+
+ Test Files  1 passed (1)
+      Tests  60 passed (60)
+   Start at  14:20:14
+   Duration  423ms (import 82%, transform 10%, tests 5%, worker 2%)
+

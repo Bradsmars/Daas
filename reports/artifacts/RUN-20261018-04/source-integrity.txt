@@ -1,0 +1,7 @@
+55/55 source hashes match workspace and fresh copy.
+Manifest SHA-256: 17a3417cca66d85df63f03a0213624b757a034bc8de60aef480629084ebf716f
+Specification SHA-256: 73e8ae012303adf24545d14e471d4afb59d6b3d7298095197b951759e4af2511
+Authoritative architecture/review, apps, database, contracts, lockfile, package.json and published reports: git diff --exit-code HEAD returned 0.
+Final branch: feat/spec-016-runtime-security; HEAD unchanged at 73d72716b1d2d26150884dbf31c78dce0a03b76f.
+Git diff --check: exit 0; Git noted SPEC-016 Markdown CRLF-to-LF normalization on a future Git operation.
+No private key or provider-token content in new runtime/test/report artifacts.

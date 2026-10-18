@@ -1,6 +1,6 @@
 # DaaS platform specification workspace
 
-SPEC-001 repository foundation and SPEC-002 shared contracts are merged into `dev`. SPEC-004 adds pure URL/context identity on `feat/spec-004-url-normalization` using synthetic fixtures and caller-supplied policy. Crawlers, MSSQL migrations and integration behavior belong to later approved specifications.
+SPEC-001 repository foundation, SPEC-002 shared contracts and SPEC-004 URL/context identity are integrated into `dev`. SPEC-016 is being implemented on `feat/spec-016-runtime-security`: validated development/test settings, role-scoped environment secrets, evidence descriptor policy and an enforcing Node HTTP(S) client. Real-source crawlers, MSSQL migrations and hosted integration belong to later approved specifications.
 
 Start with [development setup](docs/development.md), [the specification baseline](docs/architecture/master-spec.md), [the dependency graph](docs/architecture/dependency-graph.md) and [the execution plan](docs/architecture/implementation-plan.md). Foundation approval is recorded in [the approval register](docs/architecture/approval-register.md); later specifications and architectural choices still require their own gates.
 
@@ -11,7 +11,7 @@ npm ci
 npm run check
 ```
 
-`check` runs lint, strict type checking and the harness, unit and contract suites. Contracts use synthetic fixtures; external suites explicitly report `BLOCKED` without test configuration. On Windows PowerShell, use `npm.cmd` if execution policy prevents `npm.ps1`.
+`check` runs lint, strict type checking and the harness, unit and contract suites. Synthetic contract tests include actual local HTTP/HTTPS servers; they require the existing OpenSSL executable to generate temporary TLS fixtures. These tests contact no real source, Apify service or MSSQL database. External suites explicitly report `BLOCKED` without test configuration and remain unimplemented. On Windows PowerShell, use `npm.cmd` if execution policy prevents `npm.ps1`.
 
 | Resource | Purpose |
 |---|---|
@@ -22,6 +22,6 @@ npm run check
 | [Engineering principles](docs/standards/engineering-principles.md) | SDD, TDD, security and maintainability rules |
 | [Reporting and decisions](docs/standards/reporting-and-decisions.md) | Evidence and ADR conventions |
 | [Templates](docs/templates/README.md) | Reusable specification, report and ADR formats |
-| [Reports](reports/README.md) | Future implementation/test evidence; current documentation review |
+| [Reports](reports/README.md) | Implementation records, verification evidence and remaining limitations |
 
-The workspace packages are private. [Shared contracts](packages/contracts/README.md) expose schemas and trusted validation APIs; [shared URL identity](packages/shared/README.md) supplies the pure normalizer. `apps/` and `database/` document their future responsibilities; no source Actor or database client exists yet.
+The workspace packages are private. [Shared contracts](packages/contracts/README.md) expose schemas and trusted validation APIs; [shared runtime policy and URL identity](packages/shared/README.md) supply URL identity, configuration, evidence and direct transport boundaries. Production, browser and proxy modes are unsupported. `apps/` and `database/` document their future responsibilities; no source Actor or database client exists yet.

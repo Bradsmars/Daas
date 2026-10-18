@@ -1,0 +1,57 @@
+
+ RUN  v5.0.5 <workspace>
+
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016-AC-04: public-only hostname resolving to loopback never reaches the actual server 21ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > exact test capability permits native HTTP while preserving Host, query order and a bare ? 1011ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > DNS pinning performs one resolution and never resolves the original hostname during connect 5ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > a mixed DNS set rejects every connection even when the first address is permitted 2ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > test capability cannot be selected by a development runtime or grant another private range 1ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > snapshots fixture options so later mutation cannot grant a new origin 1ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > rejects ambiguous path /products/a%2fb without connecting 1ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > rejects ambiguous path /products/a%5Cb without connecting 1ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > rejects ambiguous path /products/%252e%252e/item without connecting 2ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > rejects ambiguous path /products/a%00b without connecting 2ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > rejects ambiguous path /products/a%1fb without connecting 1ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > rejects ambiguous path /products/a%7fb without connecting 1ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > rejects ambiguous path /products/a%c2%80b without connecting 1ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > rejects ambiguous path /products/a%c2%9fb without connecting 1ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > rejects ambiguous path /products/a%ffb without connecting 1ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > scope/context denial happens before DNS and redacts sensitive input 1ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > a serialized or forged session cannot authorize DNS or a connection 0ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > an aborted caller opens no connection and a later request can still proceed 3ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 HTTP scope and connection authorization > native requests ignore global and environment proxy configuration 5ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 manual redirect boundary > an approved relative redirect is separately resolved and retains provenance 1015ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 manual redirect boundary > a permitted hostname redirect to private DNS without an exact fixture grant never connects 1012ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 manual redirect boundary > redirect loops are rejected without another request 4ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 manual redirect boundary > a redirect to http://outside.example.test/private must pass scope and path authorization again 3ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 manual redirect boundary > a redirect to /private/path must pass scope and path authorization again 2ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 manual redirect boundary > a redirect to /products/a%2fb must pass scope and path authorization again 3ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 manual redirect boundary > a redirect to a new URL resolves again and rejects a changed restricted answer 1009ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 manual redirect boundary > redirect and physical request ceilings reject instead of widening the budget 1006ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > decodes bounded gzip responses 5ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > decodes bounded deflate responses 3ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > decodes bounded br responses 4ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > streaming wire bytes are capped even without Content-Length 6ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > compressed bodies cannot exceed the independent decompressed cap 4ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > Content-Length and malformed compression fail without returning a partial body 7ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > oversized response headers fail at the native HTTP parser 3ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > unknown encodings and protocol upgrades are denied 6ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > a resolver that never returns is cancelled at its DNS deadline 35ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > slow response bodies cannot evade the wall-clock request deadline 79ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > a server that never sends response headers is cancelled by the same wall-clock deadline 76ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > a real TCP server that stalls the TLS handshake is cancelled before HTTP 77ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > external abort cancels a live response and does not expose its supplied reason 47ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > rejects concurrent work, enforces real spacing and shares physical request count 1018ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > constructing another client cannot reset session concurrency, request count or rate spacing 1012ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > abort during a rate wait stops before opening the next connection 45ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > run deadline begins at client creation and blocks subsequent work 78ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > run deadline also cancels active work and survives creation of another client 63ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > run deadline cancels a rate wait without opening a second socket 154ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016 response, cancellation and shared limits > transport errors never include resolver secrets 1ms
+ ✓ |contracts| tests/contracts/secure-http.test.ts > SPEC-016-AC-04: actual TLS preserves SNI/Host, verifies trust and verifies the original hostname 72ms
+
+ Test Files  1 passed (1)
+      Tests  48 passed (48)
+   Start at  14:24:29
+   Duration  8.42s (tests 96%, import 3%, transform 1%)
+

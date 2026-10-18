@@ -1,0 +1,56 @@
+
+> daas-platform@0.0.0 test:unit
+> vitest run --project unit tests/unit/network-address.test.ts -t denies a loopback DNS answer
+
+
+ RUN  v5.0.5 <workspace>
+
+ ❯ |unit| tests/unit/network-address.test.ts (101 tests | 1 failed | 100 skipped) 9ms
+   ❯ resolved destination authorization (91)
+     × denies a loopback DNS answer before a transport can use it 8ms
+npm.cmd :
+At line:6 char:1
++ npm.cmd run test:unit -- tests/unit/network-address.test.ts -t 'denie ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| tests/unit/network-address.test.ts > resolved destination authorization > denies a loopback DNS answer
+before a transport can use it
+AssertionError: expected { ok: true, value: [ { …(2) } ] } to deeply equal { ok: false, issues: [ { …(2) } ] }
+
+- Expected
++ Received
+
+  {
+-   "issues": [
++   "ok": true,
++   "value": [
+      {
+-       "code": "destination_denied",
+-       "path": "/addresses",
++       "address": "127.0.0.1",
++       "family": 4,
+      },
+    ],
+-   "ok": false,
+  }
+
+ ❯ tests/unit/network-address.test.ts:6:78
+      4| describe('resolved destination authorization', () => {
+      5|   it('denies a loopback DNS answer before a transport can use it', () …
+      6|     expect(validateResolvedAddresses([{ address: '127.0.0.1', family: …
+       |                                                                              ^
+      7|       ok: false, issues: [{ path: '/addresses', code: 'destination_den…
+      8|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 100 skipped (101)
+   Start at  14:14:38
+   Duration  229ms (import 45%, transform 39%, tests 10%, worker 5%)
+

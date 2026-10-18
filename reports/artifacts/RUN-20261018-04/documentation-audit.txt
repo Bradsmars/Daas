@@ -1,0 +1,2 @@
+{"markdown_files":55,"local_links_checked":353,"missing":[],"DAG_nodes":18,"DAG_edges":38,"topological":true}
+EXIT=0

@@ -1,0 +1,39 @@
+
+ RUN  v5.0.5 <workspace>
+
+ × |contracts| tests/contracts/secure-http.test.ts > SPEC-016-AC-04: public-only hostname resolving to loopback never reaches the actual server 26ms
+   → expected { accepted: true, server_hits: 1 } to deeply equal { accepted: false, server_hits: +0 }
+npm.cmd :
+At line:2 char:254
++ ... | Out-Null; npm.cmd exec -- vitest run --project contracts tests/cont ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |contracts| tests/contracts/secure-http.test.ts > SPEC-016-AC-04: public-only hostname resolving to loopback
+never reaches the actual server
+AssertionError: expected { accepted: true, server_hits: 1 } to deeply equal { accepted: false, server_hits: +0 }
+
+- Expected
++ Received
+
+  {
+-   "accepted": false,
+-   "server_hits": 0,
++   "accepted": true,
++   "server_hits": 1,
+  }
+
+ ❯ tests/contracts/secure-http.test.ts:26:56
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  14:15:31
+   Duration  245ms (import 45%, transform 28%, tests 23%, worker 4%)
+

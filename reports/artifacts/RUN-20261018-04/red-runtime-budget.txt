@@ -1,0 +1,40 @@
+
+ RUN  v5.0.5 <workspace>
+
+ ❯ |contracts| tests/contracts/runtime-security.test.ts (1 test | 1 failed) 7ms
+   × SPEC-016-AC-01: missing request budget cannot create runtime state 6ms
+node.exe :
+At line:2 char:194
++ ... | Out-Null; node.exe node_modules/vitest/vitest.mjs run --project con ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |contracts| tests/contracts/runtime-security.test.ts > SPEC-016-AC-01: missing request budget cannot create
+runtime state
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/contracts/runtime-security.test.ts:9:61
+      7|   const incomplete = { ...config, limits: { ...config.limits } };
+      8|   Reflect.deleteProperty(incomplete.limits, 'max_requests');
+      9|   expect(prepareRuntime(incomplete, fixtureEnvironment).ok).toBe(false…
+       |                                                             ^
+     10| });
+     11|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  14:14:45
+   Duration  221ms (import 48%, transform 39%, tests 8%, worker 5%)
+
