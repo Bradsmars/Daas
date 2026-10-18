@@ -1,0 +1,19 @@
+﻿JSON and fingerprint verification; synthetic offline data only.
+Command: node --version
+v24.22.0
+Observed exit code: 0
+Command: node node_modules/vitest/vitest.mjs run --project unit tests/unit/json.test.ts tests/unit/fingerprint.test.ts
+
+ RUN  v5.0.5 C:/Users/Bradley/OneDrive - Liverpool John Moores University/Documents/Daas service/Daas
+
+
+ Test Files  2 passed (2)
+      Tests  88 passed (88)
+   Start at  12:50:25
+   Duration  342ms (tests 35%, import 33%, transform 27%, worker 5%)
+
+Observed exit code: 0
+Command: node node_modules/eslint/bin/eslint.js packages/contracts/src/json.ts packages/contracts/src/fingerprint.ts tests/unit/json.test.ts tests/unit/fingerprint.test.ts --max-warnings 0
+Observed exit code: 0
+Command: node node_modules/typescript/bin/tsc --noEmit
+Observed exit code: 0

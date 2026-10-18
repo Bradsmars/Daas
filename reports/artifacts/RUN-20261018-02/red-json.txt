@@ -1,0 +1,679 @@
+﻿Command: node node_modules/vitest/vitest.mjs run --project unit tests/unit/json.test.ts tests/unit/fingerprint.test.ts
+
+ RUN  v5.0.5 C:/Users/Bradley/OneDrive - Liverpool John Moores University/Documents/Daas service/Daas
+
+ ❯ |unit| tests/unit/fingerprint.test.ts (22 tests | 18 failed) 24ms
+   ❯ RFC 8785 event fingerprinting (11)
+     × hashes canonical object key order recursively, not the insertion order 10ms
+     × sorts member names by UTF-16 units and preserves Unicode strings 2ms
+     × does not mutate or invoke serialization hooks 1ms
+     × rejects non-JSON input rather than hashing a lossy substitute 1ms
+     × rejects non-JSON input rather than hashing a lossy substitute 1ms
+     × rejects non-JSON input rather than hashing a lossy substitute 1ms
+     × rejects non-JSON input rather than hashing a lossy substitute 0ms
+     × rejects non-JSON input rather than hashing a lossy substitute 1ms
+     × rejects non-JSON input rather than hashing a lossy substitute 0ms
+   ❯ manifest fingerprints (7)
+     × excludes only the own manifest_fingerprint field and keeps every other launch setting 1ms
+     × does not exclude nested fields or lose a __proto__ data key 1ms
+     × rejects invalid JSON or a non-object manifest 0ms
+     × rejects invalid JSON or a non-object manifest 0ms
+     × rejects invalid JSON or a non-object manifest 0ms
+     × rejects invalid JSON or a non-object manifest 0ms
+     × rejects invalid JSON or a non-object manifest 0ms
+   ❯ pure event replay classification (4)
+     × recognizes the same full envelope after object-key reordering as replay 1ms
+     × validates both inputs before classifying different identities 0ms
+ ❯ |unit| tests/unit/json.test.ts (59 tests | 38 failed) 56ms
+   ❯ plain JSON inspection (37)
+     × rejects non-JSON scalars (undefined) 7ms
+     × rejects non-JSON scalars (NaN) 1ms
+     × rejects non-JSON scalars (Infinity) 1ms
+     × rejects non-JSON scalars (-Infinity) 1ms
+     × rejects non-JSON scalars (1n) 1ms
+     × rejects non-JSON scalars (Symbol(private)) 0ms
+     × rejects non-JSON scalars (() => 1) 0ms
+     × rejects non-plain objects 0ms
+     × rejects non-plain objects 0ms
+     × rejects non-plain objects 0ms
+     × rejects non-plain objects 0ms
+     × rejects non-plain objects 0ms
+     × rejects class instances and array subclasses 0ms
+     × rejects accessors without invoking them 1ms
+     × rejects toJSON callbacks without invoking them 0ms
+     × rejects proxies before invoking inspection traps 0ms
+     × rejects cycles rather than overflowing the stack 0ms
+     × rejects symbol and non-enumerable members rather than silently ignoring them 0ms
+     × rejects sparse arrays, accessor elements and non-index array properties 0ms
+     × rejects lone surrogates in values and member names 0ms
+     × rejects lone surrogates in values and member names 0ms
+     × rejects lone surrogates in values and member names 0ms
+     × rejects lone surrogates in values and member names 0ms
+     × enforces UTF-16 string limits for member names and values 0ms
+     × counts the root container as depth one 0ms
+     × bounds object members across the entire message 12ms
+     × enforces the exact UTF-8 serialized byte limit, including escaping 5ms
+     × returns only fixed safe diagnostics, without rejected values or arbitrary keys 0ms
+   ❯ strict bounded raw JSON parsing (22)
+     × rejects duplicate decoded keys in the same object: {"a":1,"a":2} 0ms
+     × rejects duplicate decoded keys in the same object: {"a":1,"\u0061":2} 0ms
+     × rejects duplicate decoded keys in the same object: {"nested":{"same":1,"same":2}} 0ms
+     × rejects duplicate decoded keys in the same object: {"__proto__":1,"\u005f_proto__":2} 0ms
+     × rejects malformed, non-finite or non-strict JSON 0ms
+     × rejects invalid Unicode after escape decoding 0ms
+     × rejects invalid Unicode after escape decoding 0ms
+     × rejects invalid Unicode after escape decoding 0ms
+     × bounds nesting before ordinary JSON parsing can reach an unsafe depth 11ms
+     × applies message, string and member bounds to parsed input 1ms
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯ Failed Tests 56 ⎯⎯⎯⎯⎯⎯⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/fingerprint.test.ts > RFC 8785 event fingerprinting > hashes canonical object key order recursively, not the insertion order
+AssertionError: expected { ok: true, …(1) } to deeply equal { ok: true, …(1) }
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+  {
+    "ok": true,
+-   "value": "2546d2b65ff2cfd8ca47ec22d928c7e4585145ac80d5544f5351f1a0baa796ce",
++   "value": "6527c2460c84f121e451d6a826ce137b0824150501a31484c0341df13195b784",
+  }
+System.Management.Automation.RemoteException
+ ❯ tests/unit/fingerprint.test.ts:12:31
+     10|     const right = { array: ['b', 'a'], a: { b: 1, y: false }, z: 2 };
+     11|     const expected = sha256('{"a":{"b":1,"y":false},"array":["b","a"],…
+     12|     expect(fingerprint(left)).toEqual({ ok: true, value: expected });
+       |                               ^
+     13|     expect(fingerprint(right)).toEqual({ ok: true, value: expected });
+     14|   });
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/fingerprint.test.ts > RFC 8785 event fingerprinting > sorts member names by UTF-16 units and preserves Unicode strings
+AssertionError: expected { ok: true, …(1) } to deeply equal { ok: true, …(1) }
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+  {
+    "ok": true,
+-   "value": "81de0e529f160b7fa9699a9252345599a7c38585736fda840a3df3a2c333eaf1",
++   "value": "4bd5b2880361c7c0bd7ee4950f61b6baad66994126aabcddaea68761ce750d68",
+  }
+System.Management.Automation.RemoteException
+ ❯ tests/unit/fingerprint.test.ts:27:32
+     25|     const value = Object.fromEntries([...names].reverse().map((name) =…
+     26|     const expected = `{${names.map((name) => `${JSON.stringify(name)}:…
+     27|     expect(fingerprint(value)).toEqual({ ok: true, value: sha256(expec…
+       |                                ^
+     28|     expect(fingerprint('é')).not.toEqual(fingerprint('e\u0301'));
+     29|   });
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/fingerprint.test.ts > RFC 8785 event fingerprinting > does not mutate or invoke serialization hooks
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/fingerprint.test.ts:42:38
+     40|     let called = false;
+     41|     const withHook = { toJSON() { called = true; return null; } };
+     42|     expect(fingerprint(withHook).ok).toBe(false);
+       |                                      ^
+     43|     expect(called).toBe(false);
+     44|   });
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/fingerprint.test.ts > RFC 8785 event fingerprinting > rejects non-JSON input rather than hashing a lossy substitute
+TypeError: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+ ❯ fingerprint packages/contracts/src/fingerprint.ts:5:50
+      3|
+      4| export function fingerprint(value: unknown): Result<string> {
+      5|   return { ok: true, value: createHash('sha256').update(JSON.stringify…
+       |                                                  ^
+      6| }
+      7|
+ ❯ tests/unit/fingerprint.test.ts:47:12
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/fingerprint.test.ts > RFC 8785 event fingerprinting > rejects non-JSON input rather than hashing a lossy substitute
+ FAIL  |unit| tests/unit/fingerprint.test.ts > RFC 8785 event fingerprinting > rejects non-JSON input rather than hashing a lossy substitute
+ FAIL  |unit| tests/unit/fingerprint.test.ts > RFC 8785 event fingerprinting > rejects non-JSON input rather than hashing a lossy substitute
+ FAIL  |unit| tests/unit/fingerprint.test.ts > RFC 8785 event fingerprinting > rejects non-JSON input rather than hashing a lossy substitute
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/fingerprint.test.ts:47:35
+     45|
+     46|   it.each([undefined, NaN, Infinity, 1n, '\ud800', { invalid: undefine…
+     47|     expect(fingerprint(value).ok).toBe(false);
+       |                                   ^
+     48|   });
+     49| });
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/fingerprint.test.ts > RFC 8785 event fingerprinting > rejects non-JSON input rather than hashing a lossy substitute
+TypeError: Do not know how to serialize a BigInt
+ ❯ fingerprint packages/contracts/src/fingerprint.ts:5:62
+      3|
+      4| export function fingerprint(value: unknown): Result<string> {
+      5|   return { ok: true, value: createHash('sha256').update(JSON.stringify…
+       |                                                              ^
+      6| }
+      7|
+ ❯ tests/unit/fingerprint.test.ts:47:12
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/fingerprint.test.ts > manifest fingerprints > excludes only the own manifest_fingerprint field and keeps every other launch setting
+AssertionError: expected { ok: true, …(1) } to deeply equal { ok: true, …(1) }
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+  {
+    "ok": true,
+-   "value": "0c6cfe19d56008650d028d44b96fded30fa13dd472881753141c6829a826d197",
++   "value": "400a3f4e5795996f3bcfcd76091242943083d073ac04f069a62d0fb0804f7791",
+  }
+System.Management.Automation.RemoteException
+ ❯ tests/unit/fingerprint.test.ts:54:43
+     52|   it('excludes only the own manifest_fingerprint field and keeps every…
+     53|     const original = { run_id: 'run-a', limits: { requests: 2 }, manif…
+     54|     expect(manifestFingerprint(original)).toEqual(fingerprint({ run_id…
+       |                                           ^
+     55|     expect(manifestFingerprint({ ...original, manifest_fingerprint: 'n…
+     56|     expect(manifestFingerprint({ ...original, limits: { requests: 3 } …
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/fingerprint.test.ts > manifest fingerprints > does not exclude nested fields or lose a __proto__ data key
+AssertionError: expected { ok: true, …(1) } to deeply equal { ok: true, …(1) }
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+  {
+    "ok": true,
+-   "value": "f14da55adc1c5b5b68ff8e5fcf42dc2186cf74f3dbb2bb7a0841246676c15d9a",
++   "value": "becf05a1021c9e558418a11e9f3673559a20c4e7e76b5e083c74fcd7e04798ce",
+  }
+System.Management.Automation.RemoteException
+ ❯ tests/unit/fingerprint.test.ts:63:40
+     61|     const value = JSON.parse('{"__proto__":"data","nested":{"manifest_…
+     62|     const expected = JSON.parse('{"__proto__":"data","nested":{"manife…
+     63|     expect(manifestFingerprint(value)).toEqual(fingerprint(expected));
+       |                                        ^
+     64|     expect(manifestFingerprint({ nested: { manifest_fingerprint: 'a' }…
+     65|   });
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/fingerprint.test.ts > manifest fingerprints > rejects invalid JSON or a non-object manifest
+ FAIL  |unit| tests/unit/fingerprint.test.ts > manifest fingerprints > rejects invalid JSON or a non-object manifest
+ FAIL  |unit| tests/unit/fingerprint.test.ts > manifest fingerprints > rejects invalid JSON or a non-object manifest
+ FAIL  |unit| tests/unit/fingerprint.test.ts > manifest fingerprints > rejects invalid JSON or a non-object manifest
+ FAIL  |unit| tests/unit/fingerprint.test.ts > manifest fingerprints > rejects invalid JSON or a non-object manifest
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/fingerprint.test.ts:68:43
+     66|
+     67|   it.each([null, [], 'manifest', 1, { manifest_fingerprint: NaN }])('r…
+     68|     expect(manifestFingerprint(value).ok).toBe(false);
+       |                                           ^
+     69|   });
+     70| });
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/fingerprint.test.ts > pure event replay classification > recognizes the same full envelope after object-key reordering as replay
+AssertionError: expected { ok: true, value: 'conflict' } to deeply equal { ok: true, value: 'replay' }
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+  {
+    "ok": true,
+-   "value": "replay",
++   "value": "conflict",
+  }
+System.Management.Automation.RemoteException
+ ❯ tests/unit/fingerprint.test.ts:77:47
+     75|   it('recognizes the same full envelope after object-key reordering as…
+     76|     const incoming = { metadata: { b: 2, a: 1 }, records: [{ available…
+     77|     expect(compareEvents(previous, incoming)).toEqual({ ok: true, valu…
+       |                                               ^
+     78|   });
+     79|
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/fingerprint.test.ts > pure event replay classification > validates both inputs before classifying different identities
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/fingerprint.test.ts:90:77
+     88|
+     89|   it('validates both inputs before classifying different identities', …
+     90|     expect(compareEvents(previous, { event_id: 'event-b', value: NaN }…
+       |                                                                             ^
+     91|     expect(compareEvents({ event_id: 'event-old', value: undefined }, …
+     92|   });
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects non-JSON scalars (undefined)
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects non-JSON scalars (NaN)
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects non-JSON scalars (Infinity)
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects non-JSON scalars (-Infinity)
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects non-JSON scalars (1n)
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects non-JSON scalars (Symbol(private))
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects non-JSON scalars (() => 1)
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:44:35
+     42|
+     43|   it.each([undefined, NaN, Infinity, -Infinity, 1n, Symbol('private'),…
+     44|     expect(inspectJson(value).ok).toBe(false);
+       |                                   ^
+     45|   });
+     46|
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects non-plain objects
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects non-plain objects
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects non-plain objects
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects non-plain objects
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects non-plain objects
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:48:35
+     46|
+     47|   it.each([new Date(0), /pattern/, new Map(), new Set(), Object.create…
+     48|     expect(inspectJson(value).ok).toBe(false);
+       |                                   ^
+     49|   });
+     50|
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects class instances and array subclasses
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:54:48
+     52|     class DomainObject { field = 1; }
+     53|     class DomainArray extends Array<number> {}
+     54|     expect(inspectJson(new DomainObject()).ok).toBe(false);
+       |                                                ^
+     55|     expect(inspectJson(new DomainArray()).ok).toBe(false);
+     56|   });
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects accessors without invoking them
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:61:35
+     59|     const getter = vi.fn(() => 'must not execute');
+     60|     const value = Object.defineProperty({}, 'secret', { get: getter, e…
+     61|     expect(inspectJson(value).ok).toBe(false);
+       |                                   ^
+     62|     expect(getter).not.toHaveBeenCalled();
+     63|   });
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects toJSON callbacks without invoking them
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:67:40
+     65|   it('rejects toJSON callbacks without invoking them', () => {
+     66|     const toJSON = vi.fn(() => 'not the original data');
+     67|     expect(inspectJson({ toJSON }).ok).toBe(false);
+       |                                        ^
+     68|     expect(toJSON).not.toHaveBeenCalled();
+     69|   });
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects proxies before invoking inspection traps
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:74:35
+     72|     const trap = vi.fn(() => { throw new Error('trap invoked'); });
+     73|     const value = new Proxy({}, { ownKeys: trap, getPrototypeOf: trap …
+     74|     expect(inspectJson(value).ok).toBe(false);
+       |                                   ^
+     75|     expect(trap).not.toHaveBeenCalled();
+     76|   });
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects cycles rather than overflowing the stack
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:81:35
+     79|     const value: Record<string, unknown> = {};
+     80|     value['self'] = value;
+     81|     expect(inspectJson(value).ok).toBe(false);
+       |                                   ^
+     82|   });
+     83|
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects symbol and non-enumerable members rather than silently ignoring them
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:85:55
+     83|
+     84|   it('rejects symbol and non-enumerable members rather than silently i…
+     85|     expect(inspectJson({ [Symbol('hidden')]: 1 }).ok).toBe(false);
+       |                                                       ^
+     86|     expect(inspectJson(Object.defineProperty({}, 'hidden', { value: 1 …
+     87|     expect(inspectJson({ nested: undefined }).ok).toBe(false);
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects sparse arrays, accessor elements and non-index array properties
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:95:42
+     93|     const getter = vi.fn(() => 1);
+     94|     const withGetter = Object.defineProperty([0], '0', { get: getter }…
+     95|     expect(inspectJson(new Array(2)).ok).toBe(false);
+       |                                          ^
+     96|     expect(inspectJson(withProperty).ok).toBe(false);
+     97|     expect(inspectJson(withGetter).ok).toBe(false);
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects lone surrogates in values and member names
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects lone surrogates in values and member names
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects lone surrogates in values and member names
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > rejects lone surrogates in values and member names
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:102:35
+    100|
+    101|   it.each(['\ud800', '\udfff', 'prefix\ud800suffix', '\udc00\ud800'])(…
+    102|     expect(inspectJson(value).ok).toBe(false);
+       |                                   ^
+    103|     expect(inspectJson({ [value]: 1 }).ok).toBe(false);
+    104|   });
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > enforces UTF-16 string limits for member names and values
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:109:44
+    107|     const boundary = '😀'.repeat(JSON_LIMITS.maxStringLength / 2);
+    108|     expect(inspectJson(boundary).ok).toBe(true);
+    109|     expect(inspectJson(`${boundary}x`).ok).toBe(false);
+       |                                            ^
+    110|     expect(inspectJson({ ['k'.repeat(JSON_LIMITS.maxStringLength + 1)]…
+    111|   });
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > counts the root container as depth one
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:115:68
+    113|   it('counts the root container as depth one', () => {
+    114|     expect(inspectJson(nestedArrays(JSON_LIMITS.maxDepth)).ok).toBe(tr…
+    115|     expect(inspectJson(nestedArrays(JSON_LIMITS.maxDepth + 1)).ok).toB…
+       |                                                                    ^
+    116|   });
+    117|
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > bounds object members across the entire message
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:122:35
+    120|     expect(inspectJson(value).ok).toBe(true);
+    121|     Object.assign(value.nested, { extra: null });
+    122|     expect(inspectJson(value).ok).toBe(false);
+       |                                   ^
+    123|   });
+    124|
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > enforces the exact UTF-8 serialized byte limit, including escaping
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:130:35
+    128|     expect(inspectJson(value).ok).toBe(true);
+    129|     value[value.length - 1] += 'x';
+    130|     expect(inspectJson(value).ok).toBe(false);
+       |                                   ^
+    131|     expect(inspectJson(Array.from({ length: 100 }, () => '\u0000'.repe…
+    132|   });
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > plain JSON inspection > returns only fixed safe diagnostics, without rejected values or arbitrary keys
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:136:23
+    134|   it('returns only fixed safe diagnostics, without rejected values or …
+    135|     const result = inspectJson({ 'sensitive-customer-name': () => 'can…
+    136|     expect(result.ok).toBe(false);
+       |                       ^
+    137|     expect(JSON.stringify(result)).not.toMatch(/sensitive-customer-nam…
+    138|   });
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[26/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > strict bounded raw JSON parsing > rejects duplicate decoded keys in the same object: {"a":1,"a":2}
+ FAIL  |unit| tests/unit/json.test.ts > strict bounded raw JSON parsing > rejects duplicate decoded keys in the same object: {"a":1,"\u0061":2}
+ FAIL  |unit| tests/unit/json.test.ts > strict bounded raw JSON parsing > rejects duplicate decoded keys in the same object: {"nested":{"same":1,"same":2}}
+ FAIL  |unit| tests/unit/json.test.ts > strict bounded raw JSON parsing > rejects duplicate decoded keys in the same object: {"__proto__":1,"\u005f_proto__":2}
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:158:32
+    156|     '{"__proto__":1,"\\u005f_proto__":2}',
+    157|   ])('rejects duplicate decoded keys in the same object: %s', (text) =…
+    158|     expect(parseJson(text).ok).toBe(false);
+       |                                ^
+    159|   });
+    160|
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[27/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > strict bounded raw JSON parsing > rejects malformed, non-finite or non-strict JSON
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:166:32
+    164|
+    165|   it.each(['', 'undefined', '{', 'true false', '{"a":1,}', '[1,]', '{/…
+    166|     expect(parseJson(text).ok).toBe(false);
+       |                                ^
+    167|   });
+    168|
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[28/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > strict bounded raw JSON parsing > rejects invalid Unicode after escape decoding
+ FAIL  |unit| tests/unit/json.test.ts > strict bounded raw JSON parsing > rejects invalid Unicode after escape decoding
+ FAIL  |unit| tests/unit/json.test.ts > strict bounded raw JSON parsing > rejects invalid Unicode after escape decoding
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:170:32
+    168|
+    169|   it.each(['"\\ud800"', '{"\\udfff":1}', '"\ud800"'])('rejects invalid…
+    170|     expect(parseJson(text).ok).toBe(false);
+       |                                ^
+    171|   });
+    172|
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[29/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > strict bounded raw JSON parsing > bounds nesting before ordinary JSON parsing can reach an unsafe depth
+RangeError: Maximum call stack size exceeded
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[30/56]⎯
+System.Management.Automation.RemoteException
+ FAIL  |unit| tests/unit/json.test.ts > strict bounded raw JSON parsing > applies message, string and member bounds to parsed input
+AssertionError: expected true to be false // Object.is equality
+System.Management.Automation.RemoteException
+- Expected
++ Received
+System.Management.Automation.RemoteException
+- false
++ true
+System.Management.Automation.RemoteException
+ ❯ tests/unit/json.test.ts:180:87
+    178|   it('applies message, string and member bounds to parsed input', () =…
+    179|     expect(parseJson(JSON.stringify(nestedArrays(JSON_LIMITS.maxDepth)…
+    180|     expect(parseJson(JSON.stringify('x'.repeat(JSON_LIMITS.maxStringLe…
+       |                                                                                       ^
+    181|     expect(parseJson(' '.repeat(JSON_LIMITS.maxBytes) + 'null').ok).to…
+    182|     const members = Object.fromEntries(Array.from({ length: JSON_LIMIT…
+System.Management.Automation.RemoteException
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[31/56]⎯
+System.Management.Automation.RemoteException
+
+ Test Files  2 failed (2)
+      Tests  56 failed | 25 passed (81)
+   Start at  12:45:23
+   Duration  620ms (transform 36%, import 33%, tests 26%, worker 4%)
+
+Observed exit code: 1

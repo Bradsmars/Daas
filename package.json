@@ -16,18 +16,19 @@
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "typecheck": "tsc --noEmit",
-    "test": "npm run test:harness",
+    "test": "npm run test:harness && npm run test:unit && npm run test:contracts",
     "test:harness": "vitest run --project harness",
     "test:unit": "vitest run --project unit",
     "test:contracts": "vitest run --project contracts",
     "test:integration": "node scripts/run-external-tests.mjs mssql",
     "test:live": "node scripts/run-external-tests.mjs live",
-    "check": "npm run lint && npm run typecheck && npm run test:harness"
+    "check": "npm run lint && npm run typecheck && npm test"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "@types/node": "24.19.2",
     "eslint": "10.13.0",
+    "json-schema-to-ts": "3.1.1",
     "typescript": "6.0.3",
     "typescript-eslint": "8.71.2",
     "vitest": "5.0.5"
