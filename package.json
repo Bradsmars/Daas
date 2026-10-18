@@ -1,0 +1,35 @@
+{
+  "name": "daas-platform",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "DaaS workspace: Crawlee Actors, integration service and shared contracts.",
+  "packageManager": "npm@11.19.1",
+  "engines": {
+    "node": ">=24.22.0 <25",
+    "npm": "11.19.1"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run test:harness",
+    "test:harness": "vitest run --project harness",
+    "test:unit": "vitest run --project unit",
+    "test:contracts": "vitest run --project contracts",
+    "test:integration": "node scripts/run-external-tests.mjs mssql",
+    "test:live": "node scripts/run-external-tests.mjs live",
+    "check": "npm run lint && npm run typecheck && npm run test:harness"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "24.19.2",
+    "eslint": "10.13.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.2",
+    "vitest": "5.0.5"
+  }
+}

@@ -1,0 +1,13 @@
+
+> daas-platform@0.0.0 test:harness
+> vitest run --project harness --reporter=verbose
+
+
+ RUN  v5.0.5 <workspace>
+
+ ✓ |harness| tests/harness/external-tests.test.ts > external verification preflight > reports missing MSSQL test configuration as BLOCKED before launching a test 2ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  12:06:29
+   Duration  179ms (import 47%, transform 38%, worker 8%, tests 6%)

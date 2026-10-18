@@ -2,7 +2,7 @@
 
 Version: 0.1. Date: 18 October 2026. Status: **draft for user review**.
 
-This is an implementation planning synthesis, not a replacement for either source document. The proposed resolutions below become binding only after the user approves the graph/plan and affected decisions. All micro-specifications are draft until their individual readiness gates pass.
+This is an implementation planning synthesis, not a replacement for either source document. The proposed resolutions below become binding only after the user approves the graph/plan and affected decisions. SPEC-001 foundation has scoped approval and verification under ADR-0001; other micro-specifications remain draft until their individual readiness gates pass.
 
 ## Authoritative inputs and provenance
 

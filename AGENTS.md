@@ -1,14 +1,19 @@
 # DaaS engineering instructions
 
-Status: **DRAFT — specification work only; implementation is not approved.**
+Status: **SPEC-001 repository foundation authorised on 2026-10-18; later implementation requires approval.**
 
 ## Authority and starting gate
 
 - Follow the user's current instructions and constraints, then the authoritative architecture and accepted review decisions. The source register and reconciliation status live in `docs/architecture/master-spec.md`. Never treat an inferred requirement as an approved source requirement.
 - If the architecture and review conflict, record the conflict and obtain the user's decision. Do not silently choose an interpretation or change Crawlee, Apify or MSSQL.
 - Read the supplied `docs/architecture/master-architecture.md` and `docs/architecture/architecture-review.md` alongside the source register. Draft specifications interpret those sources; unresolved architecture choices still require the user's decision.
-- Do not write application code, dependency configuration, migrations or executable tests until the authoritative sources are reconciled and the user approves the dependency graph and implementation plan in `docs/architecture/dependency-graph.md`.
+- The user authorised starting SPEC-001 on `feat/spec-001-repository`, branched from `dev` at `3b74bd3`. This permits repository layout, strict TypeScript/tooling configuration, npm workspaces and meaningful verification of the harness. See `docs/architecture/decisions/ADR-0001-repository-toolchain.md` and the limited G0/D-01 record in `docs/architecture/approval-register.md`.
+- Work on one micro-specification at a time. Create each implementation feature branch from `dev`; keep SPEC-001 on its assigned branch. Complete and report the current specification, then obtain the user's approval before starting the next one.
+- Commits and pushes to feature branches are permitted with the user's explicit approval. On 2026-10-18 the user explicitly approved committing and pushing SPEC-001, including this clarification, to `feat/spec-001-repository` for review into `dev`.
+- Merging into `dev` requires the user's approval. Merging into `main` or deploying to production requires separate explicit approval. Never automatically merge or deploy changes. The SPEC-001 commit/push approval does not authorise a merge, deployment or the next specification.
+- The foundation approval does not authorise application behaviour, schema contracts, SQL migrations, Actors, external integrations or infrastructure. Those specifications and architectural decisions retain their readiness/approval gates in `docs/architecture/dependency-graph.md` and the approval register.
 - Do not add infrastructure without a documented need and an approved architectural decision. Prioritise the smallest working end-to-end pipeline before widening coverage or adding operational complexity.
+- Use Node 24 LTS for foundation development (initial exact pin `24.22.0`), npm workspaces, strict TypeScript, Vitest and ESLint. Select compatible exact dependency versions and commit their lockfile. Ajv and contract-validation choices remain future decisions; do not install application dependencies merely to populate the workspace.
 
 ## Before each task
 

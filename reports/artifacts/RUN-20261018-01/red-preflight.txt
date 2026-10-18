@@ -1,0 +1,36 @@
+
+> daas-platform@0.0.0 test:harness
+> vitest run --project harness --reporter=verbose
+
+
+ RUN  v5.0.5 <workspace>
+
+ × |harness| tests/harness/external-tests.test.ts > external verification preflight > reports missing MSSQL test configuration as BLOCKED before launching a test 7ms
+   → expected +0 to be 2 // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |harness| tests/harness/external-tests.test.ts > external verification preflight > reports missing MSSQL test configuration as BLOCKED before launching a test
+AssertionError: expected +0 to be 2 // Object.is equality
+
+- Expected
++ Received
+
+- 2
++ 0
+
+ ❯ tests/harness/external-tests.test.ts:11:20
+      9|     const status = runExternalSuite('mssql', { env: {}, run, report });
+     10|
+     11|     expect(status).toBe(2);
+       |                    ^
+     12|     expect(run).not.toHaveBeenCalled();
+     13|     expect(report.mock.calls.flat().join(' ')).toContain('BLOCKED');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  12:06:02
+   Duration  219ms (import 45%, transform 37%, tests 11%, worker 7%)
