@@ -1,0 +1,11 @@
+
+ RUN  v5.0.5 C:/Users/Bradley/OneDrive - Liverpool John Moores University/Documents/Daas service/Daas
+
+
+ Test Files  1 passed (1)
+      Tests  59 passed (59)
+   Start at  13:39:33
+   Duration  336ms (import 69%, transform 22%, tests 7%, worker 2%)
+
+
+Recorded test exit: 0

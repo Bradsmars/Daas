@@ -1,0 +1,7 @@
+PASS native @daas/shared import, normalization and comparison in two locale/timezone environments
+TZ=UTC LANG=en_US.UTF-8
+TZ=Pacific/Auckland LANG=tr_TR.UTF-8
+{"canonical_url":"https://target.example.test/products/item?variant=A#route","identity_key":"[\"daas-url-identity-v1\",\"2\",\"synthetic-context-v1\",\"fixture-v1\",\"https://target.example.test/products/item?variant=A#route\"]","identity_hash":"a959ec34f4c6c362200fc643662f26e7be01b2a382fd97a41117d7e601ee7261"}
+Resolved runtime environment for native determinism checks:
+UTC/en_US: {"locale":"en-GB","calendar":"gregory","numberingSystem":"latn","timeZone":"UTC","year":"numeric","month":"2-digit","day":"2-digit"}
+Pacific-Auckland/tr_TR: {"locale":"en-GB","calendar":"gregory","numberingSystem":"latn","timeZone":"Pacific/Auckland","year":"numeric","month":"2-digit","day":"2-digit"}

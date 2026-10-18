@@ -1,8 +1,8 @@
 # Micro-specification dependency graph
 
-Version 0.1. Status: proposed for G0 review. An arrow means **prerequisite must be verified before dependent implementation is merged**. Source-specific decisions are separate readiness gates, not graph nodes and not hidden implementation dependencies.
+Version 0.2, 18 October 2026. Status: scoped execution approved through SPEC-004's offline implementation; later readiness gates remain open. An arrow means **prerequisite must be verified before dependent implementation is merged**. Source-specific decisions are separate readiness gates, not graph nodes and not hidden implementation dependencies. This status update does not change the graph's edges.
 
-Execution status, 18 October 2026: SPEC-001 is integrated into `dev`; the user authorised SPEC-002's scoped offline shared contracts in [ADR-0002](decisions/ADR-0002-shared-contracts.md). Its [verification report](../../reports/implementation/SPEC-002/REPORT-20261018-02.md) does not approve downstream implementations or change these edges. Work remains one spec at a time; the next start needs user approval.
+Execution status, 18 October 2026: SPEC-001/002 are verified and integrated into `dev` at `d98b69f`. SPEC-004's approved offline scope is verified on `feat/spec-004-url-normalization`; see [ADR-0003](decisions/ADR-0003-url-identity.md), [plan](plans/SPEC-004.md) and [report](../../reports/implementation/SPEC-004/REPORT-20261018-03.md). The predecessor gate is satisfied by [SPEC-002's evidence](../../reports/implementation/SPEC-002/REPORT-20261018-02.md). Real-source D-02/D-05, SQL D-03 and live D-07 gates remain open. User acceptance, commit/push/merge and the next start are pending. Work remains one spec at a time.
 
 ```mermaid
 flowchart TD

@@ -1,6 +1,6 @@
 # DaaS platform specification workspace
 
-The SPEC-001 repository foundation is merged into `dev`. SPEC-002 adds shared message contracts, strict validation and canonical fingerprints on `feat/spec-002-contracts`. Crawlers, MSSQL migrations and integration behavior belong to later approved specifications.
+SPEC-001 repository foundation and SPEC-002 shared contracts are merged into `dev`. SPEC-004 adds pure URL/context identity on `feat/spec-004-url-normalization` using synthetic fixtures and caller-supplied policy. Crawlers, MSSQL migrations and integration behavior belong to later approved specifications.
 
 Start with [development setup](docs/development.md), [the specification baseline](docs/architecture/master-spec.md), [the dependency graph](docs/architecture/dependency-graph.md) and [the execution plan](docs/architecture/implementation-plan.md). Foundation approval is recorded in [the approval register](docs/architecture/approval-register.md); later specifications and architectural choices still require their own gates.
 
@@ -24,4 +24,4 @@ npm run check
 | [Templates](docs/templates/README.md) | Reusable specification, report and ADR formats |
 | [Reports](reports/README.md) | Future implementation/test evidence; current documentation review |
 
-The workspace packages are private. [Shared contracts](packages/contracts/README.md) expose the current schemas and trusted validation APIs. `apps/` and `database/` document their future responsibilities; no source Actor or database client exists yet.
+The workspace packages are private. [Shared contracts](packages/contracts/README.md) expose schemas and trusted validation APIs; [shared URL identity](packages/shared/README.md) supplies the pure normalizer. `apps/` and `database/` document their future responsibilities; no source Actor or database client exists yet.

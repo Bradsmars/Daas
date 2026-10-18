@@ -1,0 +1,536 @@
+
+ RUN  v5.0.5 C:/Users/Bradley/OneDrive - Liverpool John Moores University/Documents/Daas service/Daas
+
+ ❯ |contracts| tests/contracts/url-normalization.test.ts (77 tests | 75 failed) 30ms
+   ❯ SPEC-004-AC-02: source variants retain distinct identity (1)
+     × meaningful variant query values must not collapse 5ms
+   ❯ SPEC-004-AC-01: approved equivalences and byte compatibility (11)
+     × normalizes HTTPS://TARGET.EXAMPLE.TEST:443/products/item to its explicit standard equivalent 2ms
+     × normalizes https://target.example.test/products/a/../item to its explicit standard equivalent 1ms
+     × normalizes https://target.example.test/products/a/%2e%2e/item to its explicit standard equivalent 0ms
+     × normalizes https://target.example.test/products/./item to its explicit standard equivalent 0ms
+     × resolves ../item only against an explicit validated base 1ms
+     × resolves ?variant=A only against an explicit validated base 0ms
+     × resolves #section only against an explicit validated base 0ms
+     × resolves //TARGET.EXAMPLE.TEST:443/products/item only against an explicit validated base 0ms
+     × exact identity tuple bytes agree with the shared contract fingerprint 0ms
+   ❯ SPEC-004-AC-02: preservation, context and trusted configuration (22)
+     × preserves the distinct suffixes ?variant=A and ?variant=B 0ms
+     × preserves the distinct suffixes ?a=1&b=2 and ?b=2&a=1 0ms
+     × preserves the distinct suffixes ?a=1&a=2 and ?a=2&a=1 0ms
+     × preserves the distinct suffixes ?a and ?a= 0ms
+     × preserves the distinct suffixes ?a=1&&b=2 and ?a=1&b=2 0ms
+     × preserves the distinct suffixes ?a=%20 and ?a=+ 0ms
+     × preserves the distinct suffixes ?a=%2f and ?a=%2F 0ms
+     × preserves the distinct suffixes  and ? 0ms
+     × preserves the distinct suffixes  and # 0ms
+     × preserves the distinct suffixes #route/A and #route/B 0ms
+     × preserves the distinct suffixes ?a=1 and ?a=1& 0ms
+     × preserves distinct paths /products/Item and /products/item 0ms
+     × preserves distinct paths /products/item and /products/item/ 0ms
+     × preserves distinct paths /products/item/ and /products/item// 0ms
+     × preserves distinct paths /products/a%2Fb and /products/a/b 0ms
+     × preserves distinct paths /products/a%2fb and /products/a%2Fb 0ms
+     × treats source, context and policy version as independent identity dimensions 0ms
+     × snapshots policy configuration and leaves caller input untouched 1ms
+     × rejects mismatched or unsupported identity overrides 0ms
+     × rejects mismatched or unsupported identity overrides 0ms
+     × rejects mismatched or unsupported identity overrides 0ms
+     × rejects mismatched or unsupported identity overrides 0ms
+   ❯ SPEC-004-AC-03: fail-closed syntax, scope and resource limits (43)
+     × rejects malformed, unbased or out-of-scope reference "" 0ms
+     × rejects malformed, unbased or out-of-scope reference "/products/item" 0ms
+     × rejects malformed, unbased or out-of-scope reference "item" 0ms
+     × rejects malformed, unbased or out-of-scope reference "//target.example.test/products/item" 0ms
+     × rejects malformed, unbased or out-of-scope reference "ftp://target.example.test/products/item" 0ms
+     × rejects malformed, unbased or out-of-scope reference "javascript:alert(1)" 0ms
+     × rejects malformed, unbased or out-of-scope reference "https:target.example.test/products/item" 0ms
+     × rejects malformed, unbased or out-of-scope reference "https:///target.example.test/products/item" 0ms
+     × rejects malformed, unbased or out-of-scope reference "https://target.example.test\\products\\item" 0ms
+     × rejects malformed, unbased or out-of-scope reference "https://user:secret@target.example.test/products/item" 0ms
+     × rejects malformed, unbased or out-of-scope reference "https://@target.example.test/products/item" 0ms
+     × rejects malformed, unbased or out-of-scope reference "https://target.example.test/products/ bad" 0ms
+     × rejects malformed, unbased or out-of-scope reference "https://target.example.test/products/\nitem" 0ms
+     × rejects malformed, unbased or out-of-scope reference "https://target.example.test/products/item" 0ms
+     × rejects malformed, unbased or out-of-scope reference "https://target.example.test/products/%zz" 0ms
+     × rejects malformed, unbased or out-of-scope reference "https://target.example.test/products/item?x=%" 0ms
+     × rejects malformed, unbased or out-of-scope reference "https://target.example.test/products/\ud800" 0ms
+     × rejects malformed, unbased or out-of-scope reference "https://outside.example.test/products/item" 0ms
+     × rejects malformed, unbased or out-of-scope reference "http://target.example.test/products/item" 0ms
+     × rejects malformed, unbased or out-of-scope reference "https://target.example.test:444/products/item" 0ms
+     × rejects malformed, unbased or out-of-scope reference "https://target.example.test/products-other/item" 0ms
+     × rejects malformed, unbased or out-of-scope reference "https://target.example.test/products/../private/item" 0ms
+     × rejects malformed, unbased or out-of-scope reference "https://target.example.test/products/%2e%2e/private/item" 0ms
+     × rejects an invalid explicit base relative/base 0ms
+     × rejects an invalid explicit base ftp://target.example.test/ 0ms
+     × rejects an invalid explicit base https://@target.example.test/ 0ms
+     × rejects an invalid explicit base https://target.example.test/%zz 0ms
+     × applies exact raw and serialized URL bounds without truncation 0ms
+     × rejects invalid or unsupported trusted configuration 1ms
+     × rejects invalid or unsupported trusted configuration 0ms
+     × rejects invalid or unsupported trusted configuration 0ms
+     × rejects invalid or unsupported trusted configuration 0ms
+     × rejects invalid or unsupported trusted configuration 0ms
+     × rejects invalid or unsupported trusted configuration 0ms
+     × rejects invalid or unsupported trusted configuration 0ms
+     × rejects invalid or unsupported trusted configuration 0ms
+     × rejects invalid or unsupported trusted configuration 0ms
+     × rejects invalid or unsupported trusted configuration 0ms
+     × rejects invalid or unsupported trusted configuration 0ms
+     × rejects invalid or unsupported trusted configuration 0ms
+     × rejects invalid or unsupported trusted configuration 0ms
+     × rejects invalid or unsupported trusted configuration 0ms
+     × never includes a rejected URL, credential or arbitrary key in diagnostics 0ms
+node.exe :
+At line:2 char:112
++ ... $env:Path"; node.exe node_modules/vitest/vitest.mjs run --project con ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 75 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: source variants retain distinct
+identity > meaningful variant query values must not collapse
+AssertionError: expected 'https://target.example.test/products/…' not to be 'https://target.example.test/products/…'
+// Object.is equality
+ ❯ tests/contracts/url-normalization.test.ts:27:70
+     25|     expect(first.ok).toBe(true);
+     26|     expect(second.ok).toBe(true);
+     27|     if (first.ok && second.ok) expect(first.value.canonical_url).not.t…
+       |                                                                      ^
+     28|   });
+     29| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/75]⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-01: approved equivalences and byte
+compatibility > normalizes HTTPS://TARGET.EXAMPLE.TEST:443/products/item to its explicit standard equivalent
+AssertionError: expected undefined to be 'HTTPS://TARGET.EXAMPLE.TEST:443/produ…' // Object.is equality
+
+- Expected:
+"HTTPS://TARGET.EXAMPLE.TEST:443/products/item"
+
++ Received:
+undefined
+
+ ❯ tests/contracts/url-normalization.test.ts:39:33
+     37|   ])('normalizes %s to its explicit standard equivalent', (raw, expect…
+     38|     const result = normalized(raw);
+     39|     expect(result.original_url).toBe(raw);
+       |                                 ^
+     40|     expect(result.canonical_url).toBe(expected);
+     41|     const repeated = normalized(result.canonical_url);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/75]⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-01: approved equivalences and byte
+compatibility > normalizes https://target.example.test/products/a/../item to its explicit standard equivalent
+AssertionError: expected undefined to be 'https://target.example.test/products/…' // Object.is equality
+
+- Expected:
+"https://target.example.test/products/a/../item"
+
++ Received:
+undefined
+
+ ❯ tests/contracts/url-normalization.test.ts:39:33
+     37|   ])('normalizes %s to its explicit standard equivalent', (raw, expect…
+     38|     const result = normalized(raw);
+     39|     expect(result.original_url).toBe(raw);
+       |                                 ^
+     40|     expect(result.canonical_url).toBe(expected);
+     41|     const repeated = normalized(result.canonical_url);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/75]⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-01: approved equivalences and byte
+compatibility > normalizes https://target.example.test/products/a/%2e%2e/item to its explicit standard equivalent
+AssertionError: expected undefined to be 'https://target.example.test/products/…' // Object.is equality
+
+- Expected:
+"https://target.example.test/products/a/%2e%2e/item"
+
++ Received:
+undefined
+
+ ❯ tests/contracts/url-normalization.test.ts:39:33
+     37|   ])('normalizes %s to its explicit standard equivalent', (raw, expect…
+     38|     const result = normalized(raw);
+     39|     expect(result.original_url).toBe(raw);
+       |                                 ^
+     40|     expect(result.canonical_url).toBe(expected);
+     41|     const repeated = normalized(result.canonical_url);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/75]⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-01: approved equivalences and byte
+compatibility > normalizes https://target.example.test/products/./item to its explicit standard equivalent
+AssertionError: expected undefined to be 'https://target.example.test/products/…' // Object.is equality
+
+- Expected:
+"https://target.example.test/products/./item"
+
++ Received:
+undefined
+
+ ❯ tests/contracts/url-normalization.test.ts:39:33
+     37|   ])('normalizes %s to its explicit standard equivalent', (raw, expect…
+     38|     const result = normalized(raw);
+     39|     expect(result.original_url).toBe(raw);
+       |                                 ^
+     40|     expect(result.canonical_url).toBe(expected);
+     41|     const repeated = normalized(result.canonical_url);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/75]⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-01: approved equivalences and byte
+compatibility > resolves ../item only against an explicit validated base
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-01: approved equivalences and byte
+compatibility > resolves ?variant=A only against an explicit validated base
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-01: approved equivalences and byte
+compatibility > resolves #section only against an explicit validated base
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-01: approved equivalences and byte
+compatibility > resolves //TARGET.EXAMPLE.TEST:443/products/item only against an explicit validated base
+TypeError: Invalid URL
+ ❯ packages/shared/src/url-normalization.ts:4:20
+      2| export function createUrlNormalizer(_policy: unknown) {
+      3|   return (input: { url: string; request_context_id: string; normalizat…
+      4|     const parsed = new URL(input.url);
+       |                    ^
+      5|     return { ok: true, value: { canonical_url: parsed.origin + parsed.…
+      6|   };
+ ❯ normalized tests/contracts/url-normalization.test.ts:14:18
+ ❯ tests/contracts/url-normalization.test.ts:53:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/75]⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-01: approved equivalences and byte
+compatibility > exact identity tuple bytes agree with the shared contract fingerprint
+AssertionError: expected undefined to be '["daas-url-identity-v1","2","syntheti…' // Object.is equality
+
+- Expected:
+"[\"daas-url-identity-v1\",\"2\",\"synthetic-context-v1\",\"fixture-v1\",\"https://target.example.test/products/item?va
+riant=A\"]"
+
++ Received:
+undefined
+
+ ❯ tests/contracts/url-normalization.test.ts:73:33
+     71|     const result = normalized('https://target.example.test/products/it…
+     72|     const key = '["daas-url-identity-v1","2","synthetic-context-v1","f…
+     73|     expect(result.identity_key).toBe(key);
+       |                                 ^
+     74|     expect(Buffer.from(result.identity_key, 'utf8')).toEqual(Buffer.fr…
+     75|     expect(fingerprint(JSON.parse(key))).toEqual({ ok: true, value: re…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/75]⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > preserves the distinct suffixes ?variant=A and ?variant=B
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > preserves the distinct suffixes ?a=1&b=2 and ?b=2&a=1
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > preserves the distinct suffixes ?a=1&a=2 and ?a=2&a=1
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > preserves the distinct suffixes ?a and ?a=
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > preserves the distinct suffixes ?a=1&&b=2 and ?a=1&b=2
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > preserves the distinct suffixes ?a=%20 and ?a=+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > preserves the distinct suffixes ?a=%2f and ?a=%2F
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > preserves the distinct suffixes  and ?
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > preserves the distinct suffixes  and #
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > preserves the distinct suffixes #route/A and #route/B
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > preserves the distinct suffixes ?a=1 and ?a=1&
+AssertionError: expected 'https://target.example.test/products/…' not to be 'https://target.example.test/products/…'
+// Object.is equality
+ ❯ tests/contracts/url-normalization.test.ts:89:33
+     87|     const a = normalized(`https://target.example.test/products/item${f…
+     88|     const b = normalized(`https://target.example.test/products/item${s…
+     89|     expect(a.canonical_url).not.toBe(b.canonical_url);
+       |                                 ^
+     90|     expect(a.identity_key).not.toBe(b.identity_key);
+     91|     expect(a.identity_hash).not.toBe(b.identity_hash);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/75]⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > preserves distinct paths /products/Item and /products/item
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > preserves distinct paths /products/item and /products/item/
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > preserves distinct paths /products/item/ and /products/item//
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > preserves distinct paths /products/a%2Fb and /products/a/b
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > preserves distinct paths /products/a%2fb and /products/a%2Fb
+AssertionError: expected undefined not to be undefined // Object.is equality
+ ❯ tests/contracts/url-normalization.test.ts:100:77
+     98|     ['/products/a%2fb', '/products/a%2Fb'],
+     99|   ])('preserves distinct paths %s and %s', (a, b) => {
+    100|     expect(normalized(`https://target.example.test${a}`).identity_hash…
+       |                                                                             ^
+    101|   });
+    102|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/75]⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > treats source, context and policy version as independent identity dimensions
+AssertionError: expected undefined not to be undefined // Object.is equality
+ ❯ tests/contracts/url-normalization.test.ts:111:60
+    109|       const result = custom({ url: raw, request_context_id: customPoli…
+    110|       expect(result.ok).toBe(true);
+    111|       if (result.ok) expect(result.value.identity_key).not.toBe(origin…
+       |                                                            ^
+    112|     }
+    113|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/75]⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > snapshots policy configuration and leaves caller input untouched
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/contracts/url-normalization.test.ts:123:76
+    121|     expect(custom(request).ok).toBe(true);
+    122|     expect(request).toEqual(before);
+    123|     expect(custom(input('https://outside.example.test/products/item'))…
+       |                                                                            ^
+    124|   });
+    125|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/75]⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > rejects mismatched or unsupported identity overrides
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > rejects mismatched or unsupported identity overrides
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > rejects mismatched or unsupported identity overrides
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: preservation, context and trusted
+configuration > rejects mismatched or unsupported identity overrides
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/contracts/url-normalization.test.ts:131:85
+    129|     { redirect_url: 'https://target.example.test/products/other' },
+    130|   ])('rejects mismatched or unsupported identity overrides', (extra) =…
+    131|     expect(normalize(input('https://target.example.test/products/item'…
+       |                                                                                     ^
+    132|   });
+    133| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/75]⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference ""
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "/products/item"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "item"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "//target.example.test/products/item"
+TypeError: Invalid URL
+ ❯ packages/shared/src/url-normalization.ts:4:20
+      2| export function createUrlNormalizer(_policy: unknown) {
+      3|   return (input: { url: string; request_context_id: string; normalizat…
+      4|     const parsed = new URL(input.url);
+       |                    ^
+      5|     return { ok: true, value: { canonical_url: parsed.origin + parsed.…
+      6|   };
+ ❯ tests/contracts/url-normalization.test.ts:148:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/75]⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "ftp://target.example.test/products/item"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "javascript:alert(1)"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "https:target.example.test/products/item"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "https:///target.example.test/products/item"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "https://target.example.test\\products\\item"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "https://user:secret@target.example.test/products/item"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "https://@target.example.test/products/item"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "https://target.example.test/products/ bad"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "https://target.example.test/products/\nitem"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "https://target.example.test/products/item"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "https://target.example.test/products/%zz"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "https://target.example.test/products/item?x=%"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "https://target.example.test/products/\ud800"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "https://outside.example.test/products/item"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "http://target.example.test/products/item"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "https://target.example.test:444/products/item"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "https://target.example.test/products-other/item"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference "https://target.example.test/products/../private/item"
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects malformed, unbased or out-of-scope reference
+"https://target.example.test/products/%2e%2e/private/item"
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/contracts/url-normalization.test.ts:149:23
+    147|   ])('rejects malformed, unbased or out-of-scope reference %j', (url) …
+    148|     const result = normalize(input(url));
+    149|     expect(result.ok).toBe(false);
+       |                       ^
+    150|   });
+    151|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/75]⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects an invalid explicit base relative/base
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects an invalid explicit base ftp://target.example.test/
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects an invalid explicit base https://@target.example.test/
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects an invalid explicit base https://target.example.test/%zz
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/contracts/url-normalization.test.ts:153:92
+    151|
+    152|   test.each(['relative/base', 'ftp://target.example.test/', 'https://@…
+    153|     expect(normalize(input('https://target.example.test/products/item'…
+       |                                                                                            ^
+    154|   });
+
+ Test Files  1 failed (1)
+      Tests  75 failed | 2 passed (77)
+   Start at  13:37:11
+   Duration  736ms (import 63%, transform 23%, tests 12%, worker 2%)
+
+    155|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/75]⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > applies exact raw and serialized URL bounds without truncation
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/contracts/url-normalization.test.ts:160:49
+    158|     const boundary = prefix + 'x'.repeat(2048 - prefix.length);
+    159|     expect(normalize(input(boundary)).ok).toBe(true);
+    160|     expect(normalize(input(boundary + 'x')).ok).toBe(false);
+       |                                                 ^
+    161|     const expansion = prefix + 'é'.repeat(400);
+    162|     expect([...expansion].length).toBeLessThan(2048);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/75]⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects invalid or unsupported trusted configuration
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects invalid or unsupported trusted configuration
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects invalid or unsupported trusted configuration
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects invalid or unsupported trusted configuration
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects invalid or unsupported trusted configuration
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects invalid or unsupported trusted configuration
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects invalid or unsupported trusted configuration
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects invalid or unsupported trusted configuration
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects invalid or unsupported trusted configuration
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects invalid or unsupported trusted configuration
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects invalid or unsupported trusted configuration
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects invalid or unsupported trusted configuration
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects invalid or unsupported trusted configuration
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > rejects invalid or unsupported trusted configuration
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tests/contracts/url-normalization.test.ts:174:64
+    172|     { drop_query_parameters: ['tracking'] },
+    173|   ])('rejects invalid or unsupported trusted configuration', (patch) =…
+    174|     expect(() => createUrlNormalizer({ ...policy, ...patch })).toThrow…
+       |                                                                ^
+    175|   });
+    176|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/75]⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-03: fail-closed syntax, scope and resource
+limits > never includes a rejected URL, credential or arbitrary key in diagnostics
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/contracts/url-normalization.test.ts:181:25
+    179|     for (const extra of [{ url: `https://user:${secret}@target.example…
+    180|       const result = normalize({ ...input('https://target.example.test…
+    181|       expect(result.ok).toBe(false);
+       |                         ^
+    182|       expect(JSON.stringify(result)).not.toContain(secret);
+    183|       expect(JSON.stringify(result)).not.toContain('https://');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/75]⎯

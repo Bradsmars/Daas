@@ -1,15 +1,15 @@
 # Micro-specification index
 
-Version 0.3, 18 October 2026. **SPEC-001 is verified and integrated into `dev`; SPEC-002's offline shared-contract scope is verified and awaiting user review.** The remaining 16 specs are draft. No crawler, database or live pipeline implementation has started.
+Version 0.4, 18 October 2026. **SPEC-001/002 are verified and integrated into `dev`; SPEC-004's scoped offline URL/context identity is verified and awaiting user review.** The remaining 15 specs are draft. No crawler, database or live pipeline implementation has started.
 
 Read [the baseline](../architecture/master-spec.md), [DAG](../architecture/dependency-graph.md) and [implementation plan](../architecture/implementation-plan.md) first. G0 (user review of graph/plan) applies to every implementation task. Open decisions in the register block only the affected work; transitive predecessor gates still apply. The decisions below are a quick index; each spec's complete requirements and entry gates govern readiness.
 
 | ID / specification | Direct predecessors | Main open decisions | State / evidence |
 |---|---|---|---|
 | [SPEC-001 - Repository and harness](SPEC-001-repository.md) | none | Foundation G0/D-01 resolved | verified / integrated into dev in PR #2 |
-| [SPEC-002 - Versioned contracts](SPEC-002-contracts.md) | 001 | Offline scope approved; real-source/SQL decisions stay downstream | verified / [report](../../reports/implementation/SPEC-002/REPORT-20261018-02.md); user acceptance pending |
+| [SPEC-002 - Versioned contracts](SPEC-002-contracts.md) | 001 | Offline scope approved; real-source/SQL decisions stay downstream | verified / [report](../../reports/implementation/SPEC-002/REPORT-20261018-02.md); integrated into dev at `d98b69f` |
 | [SPEC-003 - Discovery Actor and coverage](SPEC-003-discovery.md) | 004,016 | D-02/05/07/09 | draft / NOT RUN |
-| [SPEC-004 - URL/context normalization](SPEC-004-url-normalization.md) | 002 | D-02/03/05 | draft / NOT RUN |
+| [SPEC-004 - URL/context normalization](SPEC-004-url-normalization.md) | 002 | Scoped offline D-03/05 and synthetic policy approved; real-source D-02/05 and SQL D-03 remain open | verified / [report](../../reports/implementation/SPEC-004/REPORT-20261018-03.md); user acceptance pending |
 | [SPEC-005 - First source adapter](SPEC-005-source-adapter.md) | 002 | D-02/06/09 | draft / NOT RUN |
 | [SPEC-006 - Extraction Actor](SPEC-006-extraction-actor.md) | 004,005,016,017 | D-02/03/06/07/09 | draft / NOT RUN |
 | [SPEC-007 - MSSQL logical schema/migrations](SPEC-007-mssql-schema.md) | 002 | D-03/05/08 | draft / NOT RUN |

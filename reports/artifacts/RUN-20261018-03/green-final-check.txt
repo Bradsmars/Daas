@@ -1,0 +1,54 @@
+
+> daas-platform@0.0.0 check
+> npm run lint && npm run typecheck && npm test
+
+
+> daas-platform@0.0.0 lint
+> eslint . --max-warnings 0
+
+
+> daas-platform@0.0.0 typecheck
+> tsc --noEmit
+
+
+> daas-platform@0.0.0 test
+> npm run test:harness && npm run test:unit && npm run test:contracts
+
+
+> daas-platform@0.0.0 test:harness
+> vitest run --project harness
+
+
+ RUN  v5.0.5 C:/Users/Bradley/OneDrive - Liverpool John Moores University/Documents/Daas service/Daas
+
+
+ Test Files  2 passed (2)
+      Tests  20 passed (20)
+   Start at  13:44:46
+   Duration  2.19s (tests 98%, import 1%, transform 1%)
+
+
+> daas-platform@0.0.0 test:unit
+> vitest run --project unit
+
+
+ RUN  v5.0.5 C:/Users/Bradley/OneDrive - Liverpool John Moores University/Documents/Daas service/Daas
+
+
+ Test Files  3 passed (3)
+      Tests  147 passed (147)
+   Start at  13:44:49
+   Duration  310ms (import 57%, tests 28%, transform 11%, worker 5%)
+
+
+> daas-platform@0.0.0 test:contracts
+> vitest run --project contracts
+
+
+ RUN  v5.0.5 C:/Users/Bradley/OneDrive - Liverpool John Moores University/Documents/Daas service/Daas
+
+
+ Test Files  3 passed (3)
+      Tests  231 passed (231)
+   Start at  13:44:50
+   Duration  624ms (import 57%, tests 31%, transform 10%, worker 1%)

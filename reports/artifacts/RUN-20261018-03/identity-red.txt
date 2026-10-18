@@ -1,0 +1,58 @@
+
+ RUN  v5.0.5 C:/Users/Bradley/OneDrive - Liverpool John Moores University/Documents/Daas service/Daas
+
+ ❯ |unit| tests/unit/url-identity.test.ts (2 tests | 2 failed) 11ms
+   ❯ URL identity bytes and collision handling (2)
+     × keeps colon-bearing context/version tuples distinct instead of joining ambiguous delimiters 6ms
+     × reports a matching digest with unequal exact keys as a collision rather than equality 3ms
+node.exe :
+At line:6 char:1
++ & (Join-Path $taskNodeRoot 'node.exe') 'node_modules/vitest/vitest.mj ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| tests/unit/url-identity.test.ts > URL identity bytes and collision handling > keeps colon-bearing
+context/version tuples distinct instead of joining ambiguous delimiters
+AssertionError: expected 'daas-url-identity-v1:1:synthetic:uk:v…' not to be 'daas-url-identity-v1:1:synthetic:uk:v…'
+// Object.is equality
+ ❯ tests/unit/url-identity.test.ts:19:36
+     17|     const first = identity({ request_context_id: 'synthetic:uk', norma…
+     18|     const second = identity({ request_context_id: 'synthetic', normali…
+     19|     expect(first.identity_key).not.toBe(second.identity_key);
+       |                                    ^
+     20|   });
+     21|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  |unit| tests/unit/url-identity.test.ts > URL identity bytes and collision handling > reports a matching digest
+with unequal exact keys as a collision rather than equality
+AssertionError: expected { ok: true, value: 'same' } to deeply equal { ok: true, value: 'hash_collision' }
+
+- Expected
++ Received
+
+  {
+    "ok": true,
+-   "value": "hash_collision",
++   "value": "same",
+  }
+
+ ❯ tests/unit/url-identity.test.ts:25:49
+     23|     const first = identity();
+     24|     const second = { ...identity({ canonical_url: 'https://example.tes…
+     25|     expect(compareUrlIdentities(first, second)).toEqual({ ok: true, va…
+       |                                                 ^
+     26|   });
+     27| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  13:35:30
+   Duration  331ms (import 71%, transform 21%, tests 5%, worker 2%)

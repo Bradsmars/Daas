@@ -1,0 +1,34 @@
+
+ RUN  v5.0.5 C:/Users/Bradley/OneDrive - Liverpool John Moores University/Documents/Daas service/Daas
+
+ ❯ |contracts| tests/contracts/url-normalization.test.ts (1 test | 1 failed) 5ms
+   ❯ SPEC-004-AC-02: source variants retain distinct identity (1)
+     × meaningful variant query values must not collapse 4ms
+node.exe :
+At line:2 char:356
++ ... | Out-Null; node.exe node_modules/vitest/vitest.mjs run --project con ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |contracts| tests/contracts/url-normalization.test.ts > SPEC-004-AC-02: source variants retain distinct
+identity > meaningful variant query values must not collapse
+AssertionError: expected 'https://target.example.test/products/…' not to be 'https://target.example.test/products/…'
+// Object.is equality
+ ❯ tests/contracts/url-normalization.test.ts:16:70
+     14|     expect(first.ok).toBe(true);
+     15|     expect(second.ok).toBe(true);
+     16|     if (first.ok && second.ok) expect(first.value.canonical_url).not.t…
+       |                                                                      ^
+     17|   });
+     18| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  13:35:36
+   Duration  201ms (import 48%, transform 40%, tests 7%, worker 5%)

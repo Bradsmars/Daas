@@ -1,14 +1,14 @@
 # Codex implementation plan
 
-Version 0.1, 18 October 2026. Status: **proposed for user review; implementation has not started**.
+Version 0.2, 18 October 2026. Status: **execution permitted only for individually approved scopes; remaining architecture decisions are proposed**.
 
-Execution update, 18 October 2026: the user authorised SPEC-001 after reviewing its plan. Foundation-only G0/D-01 approval is recorded in ADR-0001. Work now proceeds **one specification at a time on a feature branch from `dev`**, with user approval required before the next specification. The parallel opportunities below remain planning information, not permission to implement several specifications concurrently. Later architectural decisions remain open.
+Execution update, 18 October 2026: SPEC-001/002 are verified and integrated into dev. The user authorised SPEC-004's pure URL/context identity with synthetic fixtures and caller-supplied trusted policy; see ADR-0003 and its scoped plan. Work proceeds **one specification at a time on a feature branch from `dev`**, with user approval required before the next specification. Parallel opportunities remain planning information, not permission to implement several specifications concurrently. Real-source and later architectural decisions remain open.
 
 ## G0: review before coding
 
-Review [the baseline](master-spec.md), [dependency graph](dependency-graph.md) and [approval register](approval-register.md). Approve the plan and resolve the decisions needed for the next spec. Capture actual approval in an ADR and update the spec state. Do not create application code, manifests, migrations, installed dependencies or executable tests during this documentation task.
+Review [the baseline](master-spec.md), [dependency graph](dependency-graph.md) and [approval register](approval-register.md). Approve the affected plan and resolve its necessary decisions before coding. Capture actual approval in an ADR and update the spec state. The original specification-engineering task excluded implementation; current individual scopes proceed only under their subsequent explicit user approvals.
 
-The core stack stays Crawlee + hosted Apify + private MSSQL. The review's TypeScript/JSON Schema recommendation is proposed, not assumed accepted. One integration service owns scheduling, dispatch, import and reconciliation. No new workflow engine, message broker, public webhook receiver or object-storage service is part of this plan.
+The core stack stays Crawlee + hosted Apify + private MSSQL. TypeScript/JSON Schema/Ajv are accepted for the implemented foundation/contracts and scoped shared-module work; Actor/runtime compatibility remains gated. One integration service owns scheduling, dispatch, import and reconciliation. No new workflow engine, message broker, public webhook receiver or object-storage service is part of this plan.
 
 ## Implementation sequence and integration checkpoints
 

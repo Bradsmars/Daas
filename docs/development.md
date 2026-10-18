@@ -1,6 +1,6 @@
 # Development setup
 
-The repository foundation is SPEC-001. Use a feature branch from `dev`, implement one approved micro-specification, prepare review into `dev`, then wait for approval before starting another. `main` holds stable approved releases. The current branch is `feat/spec-001-repository`.
+Use a feature branch from `dev`, implement one approved micro-specification, prepare review into `dev`, then wait for approval before starting another. `main` holds stable approved releases. SPEC-001/002 are integrated into dev; SPEC-004 uses `feat/spec-004-url-normalization`.
 
 ## Runtime and installation
 
@@ -34,8 +34,8 @@ For a fresh checkout, install/select the pinned runtime first; the temporary dir
 | `npm test` | Runs all implemented offline harness, unit and contract suites. |
 | `npm run test:harness` | Runs foundation tests, including subprocess probes of test discovery/failure. |
 | `npm run check` | Runs lint, strict type checks and all implemented offline suites. |
-| `npm run test:unit` | Runs JSON resource/strict parsing and canonical fingerprint/replay tests. |
-| `npm run test:contracts` | Runs shared schemas and contextual validation against synthetic fixtures. |
+| `npm run test:unit` | Runs strict JSON, canonical fingerprints/replay and exact URL identity/collision tests. |
+| `npm run test:contracts` | Runs shared message validation and URL normalization against synthetic fixtures. |
 | `npm run test:integration` | Requires `DAAS_ENV=test` and `DAAS_MSSQL_TEST_CONNECTION_STRING`; otherwise prints BLOCKED and exits 2 before running any test. |
 | `npm run test:live` | Requires `DAAS_ENV=test` and `DAAS_APIFY_TEST_TOKEN`; otherwise prints BLOCKED and exits 2. Future tests own additional Actor/source/budget checks. |
 

@@ -1,0 +1,54 @@
+
+> daas-platform@0.0.0 check
+> npm run lint && npm run typecheck && npm test
+
+
+> daas-platform@0.0.0 lint
+> eslint . --max-warnings 0
+
+
+> daas-platform@0.0.0 typecheck
+> tsc --noEmit
+
+
+> daas-platform@0.0.0 test
+> npm run test:harness && npm run test:unit && npm run test:contracts
+
+
+> daas-platform@0.0.0 test:harness
+> vitest run --project harness
+
+
+ RUN  v5.0.5 C:/Users/Bradley/AppData/Local/Temp/daas-spec004-verify-b11c5d582ab046cca5e24ba468f28b8d
+
+
+ Test Files  2 passed (2)
+      Tests  20 passed (20)
+   Start at  13:45:54
+   Duration  2.25s (tests 94%, transform 3%, import 3%)
+
+
+> daas-platform@0.0.0 test:unit
+> vitest run --project unit
+
+
+ RUN  v5.0.5 C:/Users/Bradley/AppData/Local/Temp/daas-spec004-verify-b11c5d582ab046cca5e24ba468f28b8d
+
+
+ Test Files  3 passed (3)
+      Tests  147 passed (147)
+   Start at  13:45:57
+   Duration  420ms (import 53%, transform 29%, tests 15%, worker 2%)
+
+
+> daas-platform@0.0.0 test:contracts
+> vitest run --project contracts
+
+
+ RUN  v5.0.5 C:/Users/Bradley/AppData/Local/Temp/daas-spec004-verify-b11c5d582ab046cca5e24ba468f28b8d
+
+
+ Test Files  3 passed (3)
+      Tests  231 passed (231)
+   Start at  13:45:58
+   Duration  631ms (import 56%, tests 26%, transform 16%, worker 1%)
